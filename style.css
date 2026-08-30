@@ -8,18 +8,18 @@
 
 :root{
   /* LIGHT GREY theme — every background token is pinned to the exact same
-     value (#D3D3D3), genuinely neutral (R=G=B). No sub-shades, no bands,
+     value (#C4C4C4), genuinely neutral (R=G=B). No sub-shades, no bands,
      no gradients: one flat grey for the whole site. Token names are kept
      as-is (paper/charcoal/-2/-3) purely so every rule that already
      references them keeps working — they all resolve to the same colour. */
-  --grey:       #D3D3D3;
+  --grey:       #C4C4C4;
   --ink:        #242424;
-  --charcoal:   #D3D3D3;
-  --charcoal-2: #D3D3D3;
-  --charcoal-3: #D3D3D3;
-  --paper:      #D3D3D3;
-  --paper-2:    #D3D3D3;
-  --paper-3:    #D3D3D3;
+  --charcoal:   #C4C4C4;
+  --charcoal-2: #C4C4C4;
+  --charcoal-3: #C4C4C4;
+  --paper:      #C4C4C4;
+  --paper-2:    #C4C4C4;
+  --paper-3:    #C4C4C4;
   /* secondary/body copy — ink at reduced opacity, so every text colour
      on the site is still either "ink", a white button label, or "gold" */
   --grey-text:  rgba(36,36,36,0.68);
@@ -53,7 +53,7 @@
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; overflow-x:hidden; background:#D3D3D3; }
+html{ scroll-behavior:smooth; overflow-x:hidden; background:#C4C4C4; }
 body{
   margin:0;
   background:var(--paper);
@@ -187,12 +187,12 @@ button{ font-family:inherit; }
 .site-header{
   position:fixed; top:0; left:0; right:0; z-index:100;
   padding:22px 0;
-  background:linear-gradient(to bottom, rgba(211,211,211,.7), rgba(211,211,211,0));
+  background:linear-gradient(to bottom, rgba(196,196,196,.7), rgba(196,196,196,0));
   transition:background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease);
   border-bottom:1px solid transparent;
 }
 .site-header.is-scrolled{
-  background:rgba(211,211,211,0.92);
+  background:rgba(196,196,196,0.92);
   backdrop-filter:blur(18px) saturate(1.1);
   -webkit-backdrop-filter:blur(18px) saturate(1.1);
   padding:14px 0;
