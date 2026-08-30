@@ -8,22 +8,22 @@
 
 :root{
   /* LIGHT GREY theme — every background token is pinned to the exact same
-     value (#A9A9A9), genuinely neutral (R=G=B). No sub-shades, no bands,
+     value (#8C8C8C), genuinely neutral (R=G=B). No sub-shades, no bands,
      no gradients: one flat grey for the whole site. Token names are kept
      as-is (paper/charcoal/-2/-3) purely so every rule that already
      references them keeps working — they all resolve to the same colour. */
-  --grey:       #A9A9A9;
+  --grey:       #8C8C8C;
   --ink:        #242424;
-  --charcoal:   #A9A9A9;
-  --charcoal-2: #A9A9A9;
-  --charcoal-3: #A9A9A9;
-  --paper:      #A9A9A9;
-  --paper-2:    #A9A9A9;
-  --paper-3:    #A9A9A9;
+  --charcoal:   #8C8C8C;
+  --charcoal-2: #8C8C8C;
+  --charcoal-3: #8C8C8C;
+  --paper:      #8C8C8C;
+  --paper-2:    #8C8C8C;
+  --paper-3:    #8C8C8C;
   /* secondary/body copy — ink at reduced opacity, so every text colour
      on the site is still either "ink", a white button label, or "gold" */
-  --grey-text:  rgba(36,36,36,0.68);
-  --grey-line:  rgba(36,36,36,0.14);
+  --grey-text:  rgba(36,36,36,0.85);
+  --grey-line:  rgba(36,36,36,0.35);
 
   /* the deepest neutral — reserved for text that sits on top of a bright
      gold fill, where the contrast needs to flip */
@@ -31,8 +31,8 @@
 
   /* gold foil — the site's accent colour, kept exactly as an ACCENT: text,
      buttons and thin hairlines only, never a wash across a background. */
-  --gold:        #8A6A23;
-  --gold-2:      #6E5419;
+  --gold:        #6E5419;
+  --gold-2:      #52400F;
   --gold-deep:   #52400F;
   --gold-fill:   #C79A3D;
   --gold-fill-2: #D8AD58;
@@ -53,7 +53,7 @@
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; overflow-x:hidden; background:#A9A9A9; }
+html{ scroll-behavior:smooth; overflow-x:hidden; background:#8C8C8C; }
 body{
   margin:0;
   background:var(--paper);
@@ -187,12 +187,12 @@ button{ font-family:inherit; }
 .site-header{
   position:fixed; top:0; left:0; right:0; z-index:100;
   padding:22px 0;
-  background:linear-gradient(to bottom, rgba(169,169,169,.7), rgba(169,169,169,0));
+  background:linear-gradient(to bottom, rgba(140,140,140,.7), rgba(140,140,140,0));
   transition:background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease);
   border-bottom:1px solid transparent;
 }
 .site-header.is-scrolled{
-  background:rgba(169,169,169,0.92);
+  background:rgba(140,140,140,0.92);
   backdrop-filter:blur(18px) saturate(1.1);
   -webkit-backdrop-filter:blur(18px) saturate(1.1);
   padding:14px 0;
