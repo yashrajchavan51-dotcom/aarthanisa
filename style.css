@@ -7,45 +7,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap');
 
 :root{
-  /* LIGHT GRAY theme. --paper is the site's resting background (plain
-     .section blocks) and --charcoal is a slightly deeper light-grey band
-     (.section--dark, hero, footer) — the same light/dark RHYTHM the file
-     always intended, just with both tones now genuinely light instead of
-     both being dark. -2 / -3 variants step down together so gradients on
-     tiles/panels still render as gradients, not flat rectangles. */
-  --grey:       #948A78;
-  --ink:        #26231D;
-  --charcoal:   #EAE5D9;
-  --charcoal-2: #E2DBCB;
-  --charcoal-3: #D8CFBB;
-  --paper:      #F1EEE6;
-  --paper-2:    #E8E2D4;
-  --paper-3:    #DFD6C3;
+  /* LIGHT GREY theme — genuinely neutral (R=G=B), no warm/cool tilt at all.
+     --paper is the site's resting background (plain .section blocks) and
+     --charcoal is a slightly deeper neutral-grey band (.section--dark,
+     hero, footer) for gentle rhythm — both are still unmistakably grey,
+     just two steps of lightness apart. -2 / -3 variants step down together
+     so gradients on tiles/panels still render as gradients. */
+  --grey:       #8C8C8C;
+  --ink:        #242424;
+  --charcoal:   #ECECEC;
+  --charcoal-2: #E3E3E3;
+  --charcoal-3: #D6D6D6;
+  --paper:      #F0F0F0;
+  --paper-2:    #E7E7E7;
+  --paper-3:    #DDDDDD;
   /* secondary/body copy — ink at reduced opacity, so every text colour
      on the site is still either "ink", a white button label, or "gold" */
-  --grey-text:  rgba(38,35,29,0.68);
-  --grey-line:  rgba(38,35,29,0.14);
+  --grey-text:  rgba(36,36,36,0.68);
+  --grey-line:  rgba(36,36,36,0.14);
 
   /* the deepest neutral — reserved for text that sits on top of a bright
      gold fill, where the contrast needs to flip */
-  --dark:       #17140F;
+  --dark:       #161616;
 
-  /* gold foil — the site's accent colour. --gold / --gold-2 are deep
-     enough to read as TEXT directly on the light background (eyebrows,
-     numerals, labels). --gold-fill / --gold-fill-2 are a brighter pair
-     used only for solid FILLS (buttons, chips) that carry --dark text on
-     top — a deep gold there would sit too close in value to that text. */
+  /* gold foil — the site's accent colour, kept exactly as an ACCENT: text,
+     buttons and thin hairlines only, never a wash across a background. */
   --gold:        #8A6A23;
   --gold-2:      #6E5419;
   --gold-deep:   #52400F;
   --gold-fill:   #C79A3D;
   --gold-fill-2: #D8AD58;
-  --gold-soft:  rgba(138,106,35,0.16);
-  --gold-line:  rgba(138,106,35,0.5);
+  --gold-soft:  rgba(138,106,35,0.12);
+  --gold-line:  rgba(138,106,35,0.4);
 
   /* lightest tone in the system — brighter than --paper, kept in reserve
      for any fill that needs to lift off the page */
-  --cream:      #FAF7EF;
+  --cream:      #F6F6F5;
 
   --font-display: 'Fraunces', serif;
   --font-body: 'Inter', sans-serif;
@@ -191,12 +188,12 @@ button{ font-family:inherit; }
 .site-header{
   position:fixed; top:0; left:0; right:0; z-index:100;
   padding:22px 0;
-  background:linear-gradient(to bottom, rgba(241,238,230,.7), rgba(241,238,230,0));
+  background:linear-gradient(to bottom, rgba(240,240,240,.7), rgba(240,240,240,0));
   transition:background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease);
   border-bottom:1px solid transparent;
 }
 .site-header.is-scrolled{
-  background:rgba(241,238,230,0.92);
+  background:rgba(240,240,240,0.92);
   backdrop-filter:blur(18px) saturate(1.1);
   -webkit-backdrop-filter:blur(18px) saturate(1.1);
   padding:14px 0;
@@ -359,14 +356,14 @@ button{ font-family:inherit; }
 .hero-grid{
   position:absolute; inset:0;
   background-image:
-    linear-gradient(rgba(110,84,25,0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(110,84,25,0.07) 1px, transparent 1px);
+    linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
   background-size:48px 48px;
   mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.15));
 }
 .hero-glow{
   position:absolute; inset:-20% -10% auto -10%; height:70%;
-  background:radial-gradient(60% 60% at 70% 20%, rgba(138,106,35,0.13), transparent 70%);
+  background:radial-gradient(60% 60% at 70% 20%, rgba(0,0,0,0.035), transparent 70%);
   pointer-events:none;
 }
 .hero-art{
@@ -419,7 +416,7 @@ button{ font-family:inherit; }
 }
 .page-hero::before{
   content:""; position:absolute; inset:-20% -10% auto -10%; height:80%;
-  background:radial-gradient(55% 60% at 78% 15%, rgba(138,106,35,0.16), transparent 70%);
+  background:radial-gradient(55% 60% at 78% 15%, rgba(0,0,0,0.04), transparent 70%);
   pointer-events:none;
 }
 .page-hero .hero-grid{ mask-image:linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.35)); }
@@ -645,7 +642,7 @@ button{ font-family:inherit; }
 .testimonial::after{
   content:"\201C"; position:absolute; top:-28px; right:4px;
   font-family:var(--font-display); font-size:160px; line-height:1;
-  color:rgba(138,106,35,0.08); pointer-events:none;
+  color:rgba(0,0,0,0.06); pointer-events:none;
 }
 .testimonial p{ font-family:var(--font-display); font-style:italic; font-size:clamp(18px,2vw,23px); margin:0 0 14px; color:var(--ink); line-height:1.45; }
 .testimonial p::before{ content:"\201C"; color:var(--gold-2); font-style:normal; margin-right:4px; }
@@ -660,14 +657,14 @@ button{ font-family:inherit; }
 }
 .cta-band::before{
   content:""; position:absolute; inset:-40% -10% auto -10%; height:180%;
-  background:radial-gradient(50% 55% at 50% 0%, rgba(138,106,35,.14), transparent 70%);
+  background:radial-gradient(50% 55% at 50% 0%, rgba(0,0,0,.04), transparent 70%);
   pointer-events:none;
 }
 .cta-band::after{
   content:""; position:absolute; inset:0;
   background-image:
-    linear-gradient(rgba(138,106,35,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(138,106,35,0.06) 1px, transparent 1px);
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
   background-size:52px 52px;
   mask-image:radial-gradient(60% 90% at 50% 30%, black, transparent 80%);
   pointer-events:none;
