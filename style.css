@@ -197,7 +197,7 @@ button{ font-family:inherit; }
 .site-header{
   position:fixed; top:0; left:0; right:0; z-index:100;
   padding:22px 0;
-  background:linear-gradient(to bottom, rgba(140,140,140,.7), rgba(140,140,140,0));
+  background:transparent;
   transition:background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease);
   border-bottom:1px solid transparent;
 }
@@ -358,7 +358,7 @@ button{ font-family:inherit; }
   position:relative;
   min-height:100vh;
   display:flex; align-items:flex-end;
-  background:var(--paper);
+  background:var(--header-grey);
   color:var(--grey-text);
   overflow:hidden;
 }
@@ -414,7 +414,7 @@ button{ font-family:inherit; }
 .page-hero{
   position:relative;
   padding:clamp(160px,20vw,220px) 0 clamp(64px,8vw,96px);
-  background:var(--paper);
+  background:var(--header-grey);
   color:var(--grey-text);
   overflow:hidden;
 }
