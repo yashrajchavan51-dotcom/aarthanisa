@@ -7,19 +7,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap');
 
 :root{
-  /* LIGHT GREY theme — every background token is pinned to the exact same
-     value (#8C8C8C), genuinely neutral (R=G=B). No sub-shades, no bands,
-     no gradients: one flat grey for the whole site. Token names are kept
-     as-is (paper/charcoal/-2/-3) purely so every rule that already
-     references them keeps working — they all resolve to the same colour. */
-  --grey:       #8C8C8C;
-  --ink:        #1E1E1E;
-  --charcoal:   #8C8C8C;
-  --charcoal-2: #8C8C8C;
-  --charcoal-3: #8C8C8C;
-  --paper:      #8C8C8C;
-  --paper-2:    #8C8C8C;
-  --paper-3:    #8C8C8C;
+  /* GREY + WHITE theme. Header/footer/CTA keep the one grey as a frame;
+  /* Structural chrome vs. content. --header-grey is the site's one grey —
+     header, footer, the CTA band and the nav dropdown all share it as a
+     frame. Everything people actually READ sits on --paper (a light
+     off-white) or --cream (pure white, for cards/panels that need to lift
+     off --paper). --charcoal is a light-medium grey used only for
+     .section--dark's alternating band. */
+  --grey:         #8C8C8C;
+  --header-grey:  #8C8C8C;
+  --ink:          #1E1E1E;
+  --charcoal:     #E6E6E6;
+  --charcoal-2:   #E6E6E6;
+  --charcoal-3:   #8C8C8C;
+  --paper:        #F4F4F4;
+  --paper-2:      #F0F0F0;
+  --paper-3:      #EBEBEB;
+  --cream:        #FFFFFF;
   /* secondary/body copy — a solid dark tone (not translucent white/ink at
      low opacity) so it stays crisp against the mid-grey background rather
      than washing out */
@@ -32,16 +36,18 @@
 
   /* gold foil — the site's accent colour, kept exactly as an ACCENT: text,
      buttons and thin hairlines only, never a wash across a background.
-     Deep enough to stay legible as TEXT against the mid-grey page —
+     Deep enough to read as TEXT on the light --paper/--cream backgrounds
+     that most of the site uses; on the darker --header-grey band (header,
+     footer, CTA) it's a softer accent rather than a high-contrast one —
      --gold-fill/-2 stay bright since those are solid button fills and
      don't compete with the page background for contrast. */
-  --gold:        #C9A227;
-  --gold-2:      #A67D1E;
-  --gold-deep:   #7D5F1A;
+  --gold:        #8A6A23;
+  --gold-2:      #6E5419;
+  --gold-deep:   #52400F;
   --gold-fill:   #C79A3D;
   --gold-fill-2: #D8AD58;
-  --gold-soft:  rgba(201,162,39,0.14);
-  --gold-line:  rgba(201,162,39,0.45);
+  --gold-soft:  rgba(138,106,35,0.12);
+  --gold-line:  rgba(138,106,35,0.4);
 
   /* lightest tone in the system — brighter than --paper, kept in reserve
      for any fill that needs to lift off the page */
@@ -57,7 +63,7 @@
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; overflow-x:hidden; background:#8C8C8C; }
+html{ scroll-behavior:smooth; overflow-x:hidden; background:#F4F4F4; }
 body{
   margin:0;
   background:var(--paper);
@@ -295,7 +301,7 @@ button{ font-family:inherit; }
   display:none;
   flex-direction:column; align-items:stretch; gap:0;
   position:absolute; top:calc(100% + 12px); right:0;
-  background:var(--paper);
+  background:var(--header-grey);
   border:1px solid var(--grey-line);
   box-shadow:0 20px 44px rgba(28,28,28,.16);
   padding:8px 24px; min-width:220px;
@@ -330,7 +336,7 @@ button{ font-family:inherit; }
     display:none;
     flex-direction:column; align-items:stretch; gap:0;
     position:absolute; top:calc(100% + 12px); right:0;
-    background:var(--paper);
+    background:var(--header-grey);
     border:1px solid var(--grey-line);
     box-shadow:0 20px 44px rgba(28,28,28,.16);
     padding:8px 22px; min-width:210px; max-width:82vw;
@@ -352,7 +358,7 @@ button{ font-family:inherit; }
   position:relative;
   min-height:100vh;
   display:flex; align-items:flex-end;
-  background:var(--charcoal-3);
+  background:var(--paper);
   color:var(--grey-text);
   overflow:hidden;
 }
@@ -408,7 +414,7 @@ button{ font-family:inherit; }
 .page-hero{
   position:relative;
   padding:clamp(160px,20vw,220px) 0 clamp(64px,8vw,96px);
-  background:var(--charcoal-3);
+  background:var(--paper);
   color:var(--grey-text);
   overflow:hidden;
 }
@@ -446,7 +452,7 @@ button{ font-family:inherit; }
 /* ---------- number cards / expertise ---------- */
 .card-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--gold-line); margin-top:56px; }
 .exp-card{
-  background:var(--paper); padding:40px 32px; position:relative; overflow:hidden;
+  background:var(--cream); padding:40px 32px; position:relative; overflow:hidden;
   transition:transform .35s var(--ease), box-shadow .35s var(--ease), z-index 0s;
 }
 .exp-card::before{
@@ -463,11 +469,11 @@ button{ font-family:inherit; }
 
 /* ---------- founders ---------- */
 .founders{ display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--gold-line); margin-top:56px; }
-.founder{ background:var(--paper); padding:44px; transition:transform .35s var(--ease), box-shadow .35s var(--ease); position:relative; }
+.founder{ background:var(--cream); padding:44px; transition:transform .35s var(--ease), box-shadow .35s var(--ease); position:relative; }
 .founder:hover{ transform:translateY(-5px); box-shadow:0 20px 38px rgba(0,0,0,.32); z-index:2; }
 .founder-photo{
   width:100%; aspect-ratio:4/5; margin-bottom:28px;
-  background:var(--paper);
+  background:var(--cream);
   position:relative; overflow:hidden;
   border:1px solid var(--grey-line);
 }
@@ -498,14 +504,14 @@ button{ font-family:inherit; }
 .org-badges{ display:flex; flex-wrap:wrap; gap:1px; background:var(--gold-line); margin-top:16px; }
 .org-badge{
   flex:1 1 220px; min-height:96px; padding:20px 22px;
-  background:var(--paper);
+  background:var(--cream);
   display:flex; align-items:center; gap:16px;
   position:relative; transition:transform .3s var(--ease), box-shadow .3s var(--ease);
 }
 .org-badge:hover{ transform:translateY(-3px); box-shadow:0 14px 26px rgba(0,0,0,.28); z-index:2; }
 .org-badge .mark{
   flex:none; width:48px; height:48px; border-radius:50%;
-  background:var(--charcoal-3); color:var(--ink);
+  background:var(--header-grey); color:var(--ink);
   border:1px solid var(--gold-line);
   display:flex; align-items:center; justify-content:center;
   font-family:var(--font-display); font-size:14px; font-weight:600; letter-spacing:.02em;
@@ -543,12 +549,12 @@ button{ font-family:inherit; }
 }
 .pf-tile{
   position:relative; overflow:hidden; border:1px solid var(--grey-line);
-  background:var(--paper);
+  background:var(--cream);
 }
 .pf-tile.pf-map{
   grid-row:1 / 3;
   display:flex; align-items:center; justify-content:center;
-  background:var(--paper);
+  background:var(--cream);
 }
 .pf-tile.pf-map::after{
   content:""; position:absolute; inset:14px;
@@ -571,13 +577,13 @@ button{ font-family:inherit; }
 
 .project-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:36px; }
 .project-card{
-  display:block; border:1px solid var(--grey-line); overflow:hidden; background:var(--paper);
+  display:block; border:1px solid var(--grey-line); overflow:hidden; background:var(--cream);
   transition:transform .35s var(--ease), border-color .3s var(--ease), box-shadow .35s var(--ease);
 }
 .project-card:hover{ border-color:var(--gold); transform:translateY(-6px); box-shadow:0 22px 40px rgba(0,0,0,.35); }
 .project-thumb{
   aspect-ratio:5/4; position:relative; overflow:hidden;
-  background:var(--paper);
+  background:var(--cream);
 }
 .project-thumb svg{ position:absolute; inset:0; width:100%; height:100%; }
 .project-thumb .corner{ position:absolute; width:14px; height:14px; border-color:var(--gold); opacity:.8; }
@@ -600,7 +606,7 @@ button{ font-family:inherit; }
   background:var(--gold-line); margin-top:56px;
 }
 .process-box{
-  background:var(--paper);
+  background:var(--cream);
   padding:28px 30px;
   position:relative; overflow:hidden;
   transition:transform .35s var(--ease), box-shadow .35s var(--ease);
@@ -641,7 +647,7 @@ button{ font-family:inherit; }
 
 /* ---------- CTA band ---------- */
 .cta-band{
-  background:var(--charcoal); color:var(--grey-text);
+  background:var(--header-grey); color:var(--grey-text);
   padding:clamp(56px,8vw,96px) 0; text-align:center;
   position:relative; overflow:hidden;
 }
@@ -671,7 +677,7 @@ button{ font-family:inherit; }
 .form-field{ margin-bottom:22px; }
 .form-field label{ display:block; font-size:12px; letter-spacing:.1em; text-transform:uppercase; font-weight:600; color:var(--grey-text); margin-bottom:8px; }
 .form-field input, .form-field textarea, .form-field select{
-  width:100%; border:none; border-bottom:1px solid var(--grey-line); background:var(--paper);
+  width:100%; border:none; border-bottom:1px solid var(--grey-line); background:var(--cream);
   padding:10px 2px; font-family:var(--font-body); font-size:15px; color:var(--ink); outline:none;
   transition:border-color .3s var(--ease);
 }
@@ -681,12 +687,12 @@ button{ font-family:inherit; }
 .form-field textarea{ resize:vertical; min-height:110px; }
 .form-note{ font-size:12px; color:var(--grey-text); margin-top:-6px; }
 
-.map-wrap{ border:1px solid var(--grey-line); margin-top:56px; background:var(--charcoal-3); }
+.map-wrap{ border:1px solid var(--grey-line); margin-top:56px; background:var(--header-grey); }
 .map-wrap iframe{ width:100%; height:420px; border:0; filter:grayscale(1) contrast(0.95) brightness(1.05); display:block; }
 @media (max-width:880px){ .contact-layout{ grid-template-columns:1fr; } }
 
 /* ---------- footer ---------- */
-.site-footer{ background:var(--charcoal-3); color:var(--grey-text); padding:64px 0 28px; }
+.site-footer{ background:var(--header-grey); color:var(--grey-text); padding:64px 0 28px; }
 .footer-top{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-bottom:48px; border-bottom:1px solid var(--grey-line); }
 .footer-brand .logo-word{ color:var(--ink); }
 .footer-brand p{ color:var(--grey-text); font-size:14px; margin-top:18px; max-width:34ch; }
@@ -703,7 +709,7 @@ button{ font-family:inherit; }
 @media (max-width:880px){ .split{ grid-template-columns:1fr; } }
 .figure-panel{
   aspect-ratio:4/5;
-  background:var(--paper);
+  background:var(--cream);
   border:1px solid var(--grey-line);
   position:relative;
 }
