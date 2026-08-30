@@ -13,27 +13,31 @@
      as-is (paper/charcoal/-2/-3) purely so every rule that already
      references them keeps working — they all resolve to the same colour. */
   --grey:       #8C8C8C;
-  --ink:        #242424;
+  --ink:        #1E1E1E;
   --charcoal:   #8C8C8C;
   --charcoal-2: #8C8C8C;
   --charcoal-3: #8C8C8C;
   --paper:      #8C8C8C;
   --paper-2:    #8C8C8C;
   --paper-3:    #8C8C8C;
-  /* secondary/body copy — ink at reduced opacity, so every text colour
-     on the site is still either "ink", a white button label, or "gold" */
-  --grey-text:  rgba(36,36,36,0.85);
-  --grey-line:  rgba(36,36,36,0.35);
+  /* secondary/body copy — a solid dark tone (not translucent white/ink at
+     low opacity) so it stays crisp against the mid-grey background rather
+     than washing out */
+  --grey-text:  #262626;
+  --grey-line:  rgba(30,30,30,0.5);
 
   /* the deepest neutral — reserved for text that sits on top of a bright
      gold fill, where the contrast needs to flip */
   --dark:       #161616;
 
   /* gold foil — the site's accent colour, kept exactly as an ACCENT: text,
-     buttons and thin hairlines only, never a wash across a background. */
-  --gold:        #6E5419;
-  --gold-2:      #52400F;
-  --gold-deep:   #52400F;
+     buttons and thin hairlines only, never a wash across a background.
+     Deep enough to stay legible as TEXT against the mid-grey page —
+     --gold-fill/-2 stay bright since those are solid button fills and
+     don't compete with the page background for contrast. */
+  --gold:        #4A3812;
+  --gold-2:      #392C0E;
+  --gold-deep:   #2A200A;
   --gold-fill:   #C79A3D;
   --gold-fill-2: #D8AD58;
   --gold-soft:  rgba(138,106,35,0.12);
@@ -84,7 +88,7 @@ img{ max-width:100%; display:block; }
 a{ color:inherit; text-decoration:none; }
 h1,h2,h3,h4{
   font-family:var(--font-display);
-  font-weight:500;
+  font-weight:600;
   line-height:1.08;
   margin:0 0 .5em;
   letter-spacing:-0.01em;
