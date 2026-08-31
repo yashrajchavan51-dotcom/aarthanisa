@@ -7,20 +7,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap');
 
 :root{
-  /* GREY + WHITE theme. Header/footer/CTA keep the one grey as a frame;
   /* Structural chrome vs. content. --header-grey is the site's one grey —
-     header, footer, the CTA band and the nav dropdown all share it as a
-     frame. Everything people actually READ sits on --paper (a light
-     off-white) or --cream (pure white, for cards/panels that need to lift
-     off --paper). --charcoal is a light-medium grey used only for
-     .section--dark's alternating band. */
+     the hero, page-hero and the scrolled header all share it as a frame.
+     --paper matches it, so the rest of the page (everything people
+     actually read) sits on that same grey rather than a near-white
+     "paper." --cream stays near-white, reserved for cards/panels that
+     need to lift off --paper. --charcoal is a light grey used only for
+     .section--dark's alternating band. --accent-bg is the ~20% that's
+     deliberately NOT grey: the CTA bands and the footer. */
   --grey:         #8C8C8C;
   --header-grey:  #8C8C8C;
   --ink:          #1E1E1E;
   --charcoal:     #E6E6E6;
   --charcoal-2:   #E6E6E6;
   --charcoal-3:   #8C8C8C;
-  --paper:        #F4F4F4;
+  --paper:        #8C8C8C;
   --paper-2:      #F0F0F0;
   --paper-3:      #EBEBEB;
   --cream:        #FFFFFF;
@@ -74,7 +75,7 @@
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
-html{ scroll-behavior:smooth; overflow-x:hidden; background:#F4F4F4; }
+html{ scroll-behavior:smooth; overflow-x:hidden; background:var(--paper); }
 body{
   margin:0;
   background:var(--paper);
