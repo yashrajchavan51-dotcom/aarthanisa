@@ -57,18 +57,21 @@ if ('IntersectionObserver' in window) {
 // Project filter (projects.html)
 const filterButtons = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card, .project-feature');
+function applyProjectFilter(filter){
+  projectCards.forEach(card => {
+    card.classList.toggle('is-hidden', card.dataset.cat !== filter);
+  });
+}
 if (filterButtons.length) {
   filterButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       filterButtons.forEach(b => b.classList.remove('is-active'));
       btn.classList.add('is-active');
-      const filter = btn.dataset.filter;
-      projectCards.forEach(card => {
-        const match = filter === 'all' || card.dataset.cat === filter;
-        card.classList.toggle('is-hidden', !match);
-      });
+      applyProjectFilter(btn.dataset.filter);
     });
   });
+  const initialBtn = document.querySelector('.filter-btn.is-active') || filterButtons[0];
+  applyProjectFilter(initialBtn.dataset.filter);
 }
 
 // Quote section (home page) now shows one fixed quote — no rotation needed.
