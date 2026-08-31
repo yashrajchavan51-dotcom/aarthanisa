@@ -84,7 +84,7 @@
 
   /* home-page-only palette (ACIPL reference): white ground, charcoal type,
      navy as a restrained brand accent, pale ice-blue as a secondary tint.
-     Scoped entirely under body.home so about/projects/contact keep the
+     Scoped entirely under body.theme-light so about/projects/contact keep the
      grey+gold theme untouched. */
   --acipl-navy:  #1B2B4D;
   --acipl-ink:   #2E2E2E;
@@ -854,83 +854,117 @@ button{ font-family:inherit; }
 .home-footer .social-icons svg{ width:16px; height:16px; }
 @media (min-width:640px){ .home-footer .social-icons{ position:absolute; right:var(--pad); bottom:32px; margin-top:0; } }
 
-/* ================= HOME PAGE PALETTE (scoped to body.home only) ================= */
-body.home{ background:#fff; }
-body.home .lede{ color:var(--acipl-body); }
+/* ================= HOME PAGE PALETTE (scoped to body.theme-light only) ================= */
+body.theme-light{ background:#fff; }
+body.theme-light .lede{ color:var(--acipl-body); }
 
 /* labels — grey, not navy or gold, per feedback */
-body.home .eyebrow{ color:var(--acipl-ink); }
-body.home .eyebrow::before{ background:var(--acipl-ink); }
+body.theme-light .eyebrow{ color:var(--acipl-ink); }
+body.theme-light .eyebrow::before{ background:var(--acipl-ink); }
 
 /* navbar text — gold throughout (not just the active link), per feedback.
    The CTA button is excluded: it's a solid gold fill, so its own text
    needs to stay dark for contrast. */
-body.home .nav-links a:not(.nav-cta){ color:var(--gold-bright); }
-body.home .site-header.is-scrolled .nav-links a:not(.nav-cta){ color:var(--gold-bright); }
+body.theme-light .nav-links a:not(.nav-cta){ color:var(--gold-bright); }
+body.theme-light .site-header.is-scrolled .nav-links a:not(.nav-cta){ color:var(--gold-bright); }
 
 /* buttons — outline style, no fill, matching ACIPL's "Enquire Now" */
-body.home .btn{ border-color:var(--acipl-ink); color:var(--acipl-ink); }
-body.home .btn:hover{ background:var(--acipl-ink); border-color:var(--acipl-ink); color:#fff; }
-body.home .btn--gold{ background:transparent; border:1px solid var(--acipl-ink); color:var(--acipl-ink); }
-body.home .btn--on-dark{ border-color:var(--acipl-ink); color:var(--acipl-ink); }
+body.theme-light .btn{ border-color:var(--acipl-ink); color:var(--acipl-ink); }
+body.theme-light .btn:hover{ background:var(--acipl-ink); border-color:var(--acipl-ink); color:#fff; }
+body.theme-light .btn--gold{ background:transparent; border:1px solid var(--acipl-ink); color:var(--acipl-ink); }
+body.theme-light .btn--on-dark{ border-color:var(--acipl-ink); color:var(--acipl-ink); }
 
 /* hero — just the full-bleed photo slot, nothing else (matches ACIPL) */
-body.home .hero{ min-height:85vh; display:block; background:#fff; }
-body.home .hero .hero-photo{ position:absolute; inset:0; width:100%; height:100%; right:0; top:0; transform:none; }
+body.theme-light .hero{ min-height:85vh; display:block; background:#fff; }
+body.theme-light .hero .hero-photo{ position:absolute; inset:0; width:100%; height:100%; right:0; top:0; transform:none; }
 
 /* photo placeholders — pale ice-blue tint instead of the dashed cream box */
-body.home .about-photo-wrap{ background:var(--acipl-tint); border-color:var(--acipl-line); }
+body.theme-light .about-photo-wrap{ background:var(--acipl-tint); border-color:var(--acipl-line); }
 
 /* meet the team — circular portraits, no card frame, matching ACIPL */
-body.home .founders{ background:transparent; border:none; padding:0; gap:48px; }
-body.home .founder{ background:transparent; box-shadow:none; padding:0; text-align:center; }
-body.home .founder-photo{
+body.theme-light .founders{ background:transparent; border:none; padding:0; gap:48px; }
+body.theme-light .founder{ background:transparent; box-shadow:none; padding:0; text-align:center; }
+body.theme-light .founder-photo{
   aspect-ratio:1/1; max-width:220px; margin:0 auto 24px; border-radius:50%;
   border:1px solid var(--acipl-line); background:var(--acipl-tint); overflow:hidden;
 }
-body.home .founder-photo .initials{ color:var(--acipl-ink); }
-body.home .founder .role{ color:var(--acipl-body); }
+body.theme-light .founder-photo .initials{ color:var(--acipl-ink); }
+body.theme-light .founder .role{ color:var(--acipl-body); }
 
 /* impanelments — charcoal marks, grey captions */
-body.home .impanelment-item .mark{ color:var(--acipl-ink); }
-body.home .impanelment-item .caption{ color:var(--acipl-body); }
+body.theme-light .impanelment-item .mark{ color:var(--acipl-ink); }
+body.theme-light .impanelment-item .caption{ color:var(--acipl-body); }
 
 /* quote carousel — soft white type, small navy corner bracket */
-body.home .quote-carousel__slide{ padding-top:44px; }
-body.home .quote-carousel__slide::before{
+body.theme-light .quote-carousel__slide{ padding-top:44px; }
+body.theme-light .quote-carousel__slide::before{
   content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
   width:26px; height:26px;
   border-top:2px solid rgba(255,255,255,.55); border-left:2px solid rgba(255,255,255,.55);
 }
-body.home .quote-carousel__slide span{ color:rgba(255,255,255,.75); }
+body.theme-light .quote-carousel__slide span{ color:rgba(255,255,255,.75); }
 
 /* footer — rebuilt white/outline, matching ACIPL's "Get in Touch" band */
-body.home .home-footer{
+body.theme-light .home-footer{
   background:#fff; color:var(--acipl-body); text-align:left;
   border-top:1px solid var(--acipl-line); padding:clamp(48px,7vw,80px) 0 28px;
 }
-body.home .home-footer .footer-head{
+body.theme-light .home-footer .footer-head{
   display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:16px;
   border-bottom:1px solid var(--acipl-line); padding-bottom:28px; margin-bottom:28px;
 }
-body.home .home-footer .footer-head h2{ font-size:clamp(24px,3vw,32px); color:var(--acipl-ink); margin:0; }
-body.home .home-footer .since{ font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--acipl-body); white-space:nowrap; }
-body.home .home-footer .since b{ color:var(--acipl-ink); font-family:var(--font-display); font-size:16px; }
-body.home .home-footer address{ font-style:normal; color:var(--acipl-body); line-height:1.7; margin-bottom:28px; }
-body.home .home-footer address a{ color:var(--acipl-body); }
-body.home .home-footer address a:hover{ color:var(--acipl-ink); }
-body.home .home-footer .btn{ display:inline-flex; }
-body.home .home-footer .legal-row{
+body.theme-light .home-footer .footer-head h2{ font-size:clamp(24px,3vw,32px); color:var(--acipl-ink); margin:0; }
+body.theme-light .home-footer .since{ font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--acipl-body); white-space:nowrap; }
+body.theme-light .home-footer .since b{ color:var(--acipl-ink); font-family:var(--font-display); font-size:16px; }
+body.theme-light .home-footer address{ font-style:normal; color:var(--acipl-body); line-height:1.7; margin-bottom:28px; }
+body.theme-light .home-footer address a{ color:var(--acipl-body); }
+body.theme-light .home-footer address a:hover{ color:var(--acipl-ink); }
+body.theme-light .home-footer .btn{ display:inline-flex; }
+body.theme-light .home-footer .legal-row{
   display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
   margin-top:48px;
 }
-body.home .home-footer .legal-links{ justify-content:flex-start; margin:0; color:var(--acipl-body); }
-body.home .home-footer .legal-links a{ color:var(--acipl-body); }
-body.home .home-footer .legal-links a:hover{ color:var(--acipl-ink); }
-body.home .home-footer .copyright{ color:var(--acipl-body); }
-body.home .home-footer .social-icons{ position:static; margin:0; justify-content:flex-end; }
-body.home .home-footer .social-icons a{ border-color:var(--acipl-line); color:var(--acipl-ink); }
-body.home .home-footer .social-icons a:hover{ background:var(--acipl-ink); border-color:var(--acipl-ink); color:#fff; }
+body.theme-light .home-footer .legal-links{ justify-content:flex-start; margin:0; color:var(--acipl-body); }
+body.theme-light .home-footer .legal-links a{ color:var(--acipl-body); }
+body.theme-light .home-footer .legal-links a:hover{ color:var(--acipl-ink); }
+body.theme-light .home-footer .copyright{ color:var(--acipl-body); }
+body.theme-light .home-footer .social-icons{ position:static; margin:0; justify-content:flex-end; }
+body.theme-light .home-footer .social-icons a{ border-color:var(--acipl-line); color:var(--acipl-ink); }
+body.theme-light .home-footer .social-icons a:hover{ background:var(--acipl-ink); border-color:var(--acipl-ink); color:#fff; }
 @media (max-width:620px){
-  body.home .home-footer .legal-row{ flex-direction:column; align-items:flex-start; }
+  body.theme-light .home-footer .legal-row{ flex-direction:column; align-items:flex-start; }
 }
+
+/* ================= PROJECTS PAGE — same light theme (scoped, contact.html untouched) ================= */
+
+/* page-hero: white ground instead of grey, labels/body text follow the same rule as everywhere else */
+body.theme-light .page-hero{ background:#fff; }
+body.theme-light .page-hero .lede{ color:var(--acipl-body); }
+body.theme-light .page-hero .eyebrow{ color:var(--acipl-ink); }
+body.theme-light .page-hero .eyebrow::before{ background:var(--acipl-ink); }
+
+/* filter bar: charcoal fill for the active/hover state instead of gold */
+body.theme-light .filter-btn:hover{ border-color:var(--acipl-ink); color:var(--acipl-ink); }
+body.theme-light .filter-btn.is-active{ background:var(--acipl-ink); border-color:var(--acipl-ink); color:#fff; }
+
+/* project media tiles: same pale tint used for photo placeholders elsewhere */
+body.theme-light .pf-tile,
+body.theme-light .pf-tile.pf-map{ background:var(--acipl-tint); border-color:var(--acipl-line); }
+body.theme-light .pf-tile.pf-map::after{ border-color:var(--acipl-line); }
+
+/* CTA band: white instead of the dark bronze accent, matching the rest of the page */
+body.theme-light .cta-band{ background:#fff; color:var(--acipl-body); border-top:1px solid var(--acipl-line); }
+body.theme-light .cta-band .eyebrow{ color:var(--acipl-ink); }
+body.theme-light .cta-band .eyebrow::before{ background:var(--acipl-ink); }
+body.theme-light .cta-band h2{ color:var(--acipl-ink); }
+body.theme-light .cta-band .lede{ color:var(--acipl-body); }
+
+/* shared footer: white instead of the dark bronze accent */
+body.theme-light .site-footer{ background:#fff; color:var(--acipl-body); border-top:1px solid var(--acipl-line); }
+body.theme-light .footer-top{ border-bottom-color:var(--acipl-line); }
+body.theme-light .footer-brand .logo-word{ color:var(--acipl-ink); }
+body.theme-light .footer-brand p{ color:var(--acipl-body); }
+body.theme-light .footer-col h5{ color:var(--acipl-ink); }
+body.theme-light .footer-col a{ color:var(--acipl-body); }
+body.theme-light .footer-col a:hover{ color:var(--acipl-ink); }
+body.theme-light .footer-bottom{ color:var(--acipl-body); }
