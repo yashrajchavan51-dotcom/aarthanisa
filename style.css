@@ -11,10 +11,11 @@
      the hero, page-hero and the scrolled header all share it as a frame.
      --paper matches it, so the rest of the page (everything people
      actually read) sits on that same grey rather than a near-white
-     "paper." --cream stays near-white, reserved for cards/panels that
-     need to lift off --paper. --charcoal is a light grey used only for
-     .section--dark's alternating band. --accent-bg is the ~20% that's
-     deliberately NOT grey: the CTA bands and the footer. */
+     "paper." --cream is a muted light grey (not white) reserved for
+     cards/panels that need to lift off --paper without glaring.
+     --charcoal is a light grey used only for .section--dark's alternating
+     band. --accent-bg is the ~20% that's deliberately NOT grey: the CTA
+     bands and the footer. */
   --grey:         #8C8C8C;
   --header-grey:  #8C8C8C;
   --ink:          #1E1E1E;
@@ -24,7 +25,6 @@
   --paper:        #8C8C8C;
   --paper-2:      #F0F0F0;
   --paper-3:      #EBEBEB;
-  --cream:        #FFFFFF;
   /* secondary/body copy — a solid dark tone (not translucent white/ink at
      low opacity) so it stays crisp against the mid-grey background rather
      than washing out */
@@ -55,15 +55,17 @@
      every grey token above, paired with light, SOLID (never translucent)
      text tones so nothing washes out against it. */
   --accent-bg:     var(--gold-deep);
-  --accent-ink:    var(--cream);
+  --accent-ink:    #F6F6F5;
   --accent-muted:  #C7C0B2;
   --accent-dim:    #98907E;
   --accent-line:   rgba(246,246,245,.16);
   --accent-gold:   var(--gold-fill-2);
 
-  /* lightest tone in the system — brighter than --paper, kept in reserve
-     for any fill that needs to lift off the page */
-  --cream:      #F6F6F5;
+  /* card/panel fill — a soft, muted light grey rather than near-white, so
+     large filled cards don't read as a glare against --paper. Still
+     clearly lighter than --paper so panels keep their lift; the border +
+     shadow on each card do the rest of the separating work. */
+  --cream:      #C8C8C8;
 
   --font-display: 'Fraunces', serif;
   --font-body: 'Inter', sans-serif;
