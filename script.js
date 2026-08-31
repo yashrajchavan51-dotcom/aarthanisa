@@ -70,8 +70,19 @@ if (filterButtons.length) {
       applyProjectFilter(btn.dataset.filter);
     });
   });
-  const initialBtn = document.querySelector('.filter-btn.is-active') || filterButtons[0];
+  const requestedFilter = new URLSearchParams(location.search).get('filter');
+  const requestedBtn = requestedFilter
+    ? Array.from(filterButtons).find(b => b.dataset.filter === requestedFilter)
+    : null;
+  const initialBtn = requestedBtn || document.querySelector('.filter-btn.is-active') || filterButtons[0];
+  filterButtons.forEach(b => b.classList.remove('is-active'));
+  initialBtn.classList.add('is-active');
   applyProjectFilter(initialBtn.dataset.filter);
+
+  if (requestedFilter) {
+    const navSubitem = document.querySelector(`.nav-subitem a[href$="filter=${requestedFilter}"]`);
+    if (navSubitem) navSubitem.classList.add('is-active');
+  }
 }
 
 // Quote section (home page) now shows one fixed quote — no rotation needed.
