@@ -221,9 +221,11 @@ button{ font-family:inherit; }
   font-weight:600;
 }
 
-/* ---------- reveal on scroll ---------- */
-.reveal{ opacity:0; transform:translateY(22px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
-.reveal.is-visible{ opacity:1; transform:translateY(0); }
+/* ---------- reveal on scroll — disabled: content stays visible immediately,
+   it was going invisible on load whenever a section sat too close to the
+   fold to cross the visibility threshold before the user scrolled ---------- */
+.reveal{ opacity:1; transform:none; }
+.reveal.is-visible{ opacity:1; transform:none; }
 
 /* ---------- header ---------- */
 /* Full menu visible at the top of the page. Once you scroll past the hero,
