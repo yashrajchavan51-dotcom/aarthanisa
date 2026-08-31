@@ -99,15 +99,13 @@ if (contactForm) {
   });
 }
 
-// About section (home page): make the photo's bottom edge land exactly on
-// the text column's bottom edge (where "The Full Story" button ends),
-// instead of the image dictating its own height and overshooting it.
-// About section (home page): the photo frame's top/bottom exactly match
-// the text column's — from the first paragraph's top to the last
-// paragraph's bottom — instead of using a fixed height.
+// About section (home page): the quote + photo together match the text
+// column's height exactly — the photo takes whatever's left after the
+// quote's own height and spacing are accounted for.
 function syncAboutPhotoHeight(){
   const split = document.querySelector('.about-split');
   const photoWrap = document.querySelector('.about-photo-wrap');
+  const quote = document.querySelector('.about-quote');
   if (!split || !photoWrap) return;
   if (window.matchMedia('(max-width: 820px)').matches) {
     photoWrap.style.height = ''; // let the mobile CSS value apply instead
@@ -116,7 +114,14 @@ function syncAboutPhotoHeight(){
   const left = split.children[0];
   if (!left) return;
   const leftRect = left.getBoundingClientRect();
-  const available = leftRect.bottom - leftRect.top;
+  const textHeight = leftRect.bottom - leftRect.top;
+  let usedByQuote = 0;
+  if (quote) {
+    const quoteRect = quote.getBoundingClientRect();
+    const quoteMarginBottom = parseFloat(getComputedStyle(quote).marginBottom) || 0;
+    usedByQuote = quoteRect.height + quoteMarginBottom;
+  }
+  const available = textHeight - usedByQuote;
   photoWrap.style.height = available > 100 ? available + 'px' : '';
 }
 window.addEventListener('load', syncAboutPhotoHeight);
