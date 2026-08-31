@@ -71,7 +71,16 @@ if (filterButtons.length) {
   });
 }
 
-// Contact form (static demo — no backend wired up)
+// Quote carousel (home page) — crossfades between quote slides
+const quoteSlides = document.querySelectorAll('.quote-carousel__slide');
+if (quoteSlides.length > 1) {
+  let quoteIndex = 0;
+  setInterval(() => {
+    quoteSlides[quoteIndex].classList.remove('is-active');
+    quoteIndex = (quoteIndex + 1) % quoteSlides.length;
+    quoteSlides[quoteIndex].classList.add('is-active');
+  }, 5000);
+}
 const contactForm = document.querySelector('#contact-form');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
