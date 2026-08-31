@@ -474,7 +474,7 @@ button{ font-family:inherit; }
 /* ---------- inner page hero (shorter) ---------- */
 .page-hero{
   position:relative;
-  padding:clamp(160px,20vw,220px) 0 clamp(20px,3vw,32px);
+  padding:clamp(120px,14vw,160px) 0 clamp(20px,3vw,32px);
   background:var(--header-grey);
   color:var(--grey-text);
   overflow:hidden;
@@ -915,12 +915,9 @@ body.theme-light .founders{ background:transparent; border:none; padding:0; gap:
 body.theme-light .founder{ background:transparent; box-shadow:none; padding:0; text-align:center; }
 body.theme-light .founder-photo{
   aspect-ratio:1/1; max-width:220px; margin:0 auto 24px; border-radius:50%;
-  border:2px solid var(--grey-line); background:var(--acipl-tint); overflow:hidden;
+  border:4px solid var(--gold-bright); background:var(--acipl-tint); overflow:hidden;
 }
-body.theme-light .founder-photo::after{
-  content:""; position:absolute; inset:7px; border-radius:50%;
-  border:1px solid var(--gold-bright); pointer-events:none;
-}
+body.theme-light .founder-photo::after{ content:none; }
 body.theme-light .founder-photo .initials{ color:var(--acipl-ink); }
 body.theme-light .founder .role{ color:var(--acipl-body); }
 
