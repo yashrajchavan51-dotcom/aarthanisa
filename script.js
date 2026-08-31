@@ -71,16 +71,8 @@ if (filterButtons.length) {
   });
 }
 
-// Quote carousel (home page) — crossfades between quote slides
-const quoteSlides = document.querySelectorAll('.quote-carousel__slide');
-if (quoteSlides.length > 1) {
-  let quoteIndex = 0;
-  setInterval(() => {
-    quoteSlides[quoteIndex].classList.remove('is-active');
-    quoteIndex = (quoteIndex + 1) % quoteSlides.length;
-    quoteSlides[quoteIndex].classList.add('is-active');
-  }, 5000);
-}
+// Quote section (home page) now shows one fixed quote — no rotation needed.
+
 const contactForm = document.querySelector('#contact-form');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
@@ -96,5 +88,25 @@ if (contactForm) {
 // About section (home page): make the photo's bottom edge land exactly on
 // the text column's bottom edge (where "The Full Story" button ends),
 // instead of the image dictating its own height and overshooting it.
-// (about-section photo now uses a fixed generous size in CSS instead of
-// being height-matched to the text column — see .about-photo-wrap)
+// About section (home page): the photo frame's top/bottom exactly match
+// the text column's — from the first paragraph's top to the last
+// paragraph's bottom — instead of using a fixed height.
+function syncAboutPhotoHeight(){
+  const split = document.querySelector('.about-split');
+  const photoWrap = document.querySelector('.about-photo-wrap');
+  if (!split || !photoWrap) return;
+  if (window.matchMedia('(max-width: 820px)').matches) {
+    photoWrap.style.height = ''; // let the mobile CSS value apply instead
+    return;
+  }
+  const left = split.children[0];
+  if (!left) return;
+  const leftRect = left.getBoundingClientRect();
+  const available = leftRect.bottom - leftRect.top;
+  photoWrap.style.height = available > 100 ? available + 'px' : '';
+}
+window.addEventListener('load', syncAboutPhotoHeight);
+window.addEventListener('resize', syncAboutPhotoHeight);
+if (document.fonts && document.fonts.ready) {
+  document.fonts.ready.then(syncAboutPhotoHeight);
+}
