@@ -99,13 +99,11 @@ if (contactForm) {
   });
 }
 
-// About section (home page): the quote + photo together match the text
-// column's height exactly — the photo takes whatever's left after the
-// quote's own height and spacing are accounted for.
+// About section (home page): the photo frame's height exactly matches
+// the text column's, so both edges line up.
 function syncAboutPhotoHeight(){
   const split = document.querySelector('.about-split');
   const photoWrap = document.querySelector('.about-photo-wrap');
-  const quote = document.querySelector('.about-quote');
   if (!split || !photoWrap) return;
   if (window.matchMedia('(max-width: 820px)').matches) {
     photoWrap.style.height = ''; // let the mobile CSS value apply instead
@@ -114,14 +112,7 @@ function syncAboutPhotoHeight(){
   const left = split.children[0];
   if (!left) return;
   const leftRect = left.getBoundingClientRect();
-  const textHeight = leftRect.bottom - leftRect.top;
-  let usedByQuote = 0;
-  if (quote) {
-    const quoteRect = quote.getBoundingClientRect();
-    const quoteMarginBottom = parseFloat(getComputedStyle(quote).marginBottom) || 0;
-    usedByQuote = quoteRect.height + quoteMarginBottom;
-  }
-  const available = textHeight - usedByQuote;
+  const available = leftRect.bottom - leftRect.top;
   photoWrap.style.height = available > 100 ? available + 'px' : '';
 }
 window.addEventListener('load', syncAboutPhotoHeight);
