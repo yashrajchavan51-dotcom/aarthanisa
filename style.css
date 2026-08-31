@@ -1,10 +1,20 @@
 /* =========================================================
    ARTHANISA — Design tokens
    Grey (concrete / drafting paper) + Gold (accent) editorial theme
-   Display: Fraunces  |  Body: Inter  |  Label: Inter (tracked caps)
+   Display: Absans  |  Body: Absans  |  Label: Absans (tracked caps)
+   Absans ships one weight (Regular) — the browser synthesizes bold
+   where the site asks for 500/600/700, since no separate bold file
+   exists yet.
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600;700&display=swap');
+@font-face{
+  font-family:'Absans';
+  src:url('Absans-Regular.woff2') format('woff2'),
+      url('Absans-Regular.woff') format('woff');
+  font-weight:400;
+  font-style:normal;
+  font-display:swap;
+}
 
 :root{
   /* Structural chrome vs. content. --header-grey is the site's one grey —
@@ -74,8 +84,8 @@
      shadow on each card do the rest of the separating work. */
   --cream:      #C8C8C8;
 
-  --font-display: 'Fraunces', serif;
-  --font-body: 'Inter', sans-serif;
+  --font-display: 'Absans', sans-serif;
+  --font-body: 'Absans', sans-serif;
 
   --container: 1240px;
   --pad: clamp(24px, 5vw, 72px);
