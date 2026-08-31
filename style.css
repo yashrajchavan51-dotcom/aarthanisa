@@ -780,10 +780,11 @@ button{ font-family:inherit; }
   position:absolute; right:clamp(-20px,4vw,60px); top:50%;
   transform:translateY(-50%);
   width:min(46vw,600px); height:min(56vh,560px);
+  object-fit:cover; display:block;
 }
 @media (max-width:880px){ .hero-photo{ width:80vw; height:38vh; right:-10vw; opacity:.7; } }
 
-/* about: studio text on the left, pull-quote on the right, photo below */
+/* about: studio text on the left, pull-quote on the right, sketch photo below */
 .about-split{ display:grid; grid-template-columns:1.2fr 1fr; gap:clamp(40px,6vw,88px); align-items:start; margin-top:32px; }
 .about-split__quote{ border-left:1px solid var(--gold-line); padding-left:clamp(24px,3vw,40px); }
 .about-split__quote blockquote{
@@ -795,7 +796,12 @@ button{ font-family:inherit; }
   .about-split{ grid-template-columns:1fr; }
   .about-split__quote{ border-left:none; border-top:1px solid var(--gold-line); padding-left:0; padding-top:24px; }
 }
-.about-photo{ margin-top:clamp(40px,6vw,72px); aspect-ratio:21/9; }
+.about-photo-wrap{
+  margin-top:clamp(40px,6vw,72px); background:var(--cream);
+  display:flex; justify-content:center; padding:clamp(24px,4vw,40px);
+  border:1px solid var(--grey-line);
+}
+.about-photo-wrap img{ max-width:440px; width:100%; height:auto; display:block; }
 
 /* impanelments — open marks (no circular badge), caption below each */
 .impanelment-grid{ display:flex; flex-wrap:wrap; gap:clamp(32px,5vw,64px); margin-top:40px; }
@@ -809,8 +815,7 @@ button{ font-family:inherit; }
 
 /* rotating quote carousel over a photo background, ACIPL-style */
 .quote-carousel{ position:relative; min-height:clamp(360px,48vw,480px); display:flex; align-items:center; justify-content:center; overflow:hidden; }
-.quote-carousel .photo-placeholder{ position:absolute; inset:0; border:none; }
-.quote-carousel .photo-placeholder svg, .quote-carousel .photo-placeholder span{ display:none; }
+.quote-carousel__bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
 .quote-carousel__overlay{ position:absolute; inset:0; background:rgba(20,16,8,0.5); }
 .quote-carousel__slide{
   position:absolute; inset:0; z-index:1; margin:auto;
@@ -857,9 +862,11 @@ body.home .lede{ color:var(--acipl-body); }
 body.home .eyebrow{ color:var(--acipl-ink); }
 body.home .eyebrow::before{ background:var(--acipl-ink); }
 
-/* header + nav intentionally NOT overridden here — it keeps the site's
-   usual grey-on-scroll background with gold text/logo, matching every
-   other page. */
+/* navbar text — gold throughout (not just the active link), per feedback.
+   The CTA button is excluded: it's a solid gold fill, so its own text
+   needs to stay dark for contrast. */
+body.home .nav-links a:not(.nav-cta){ color:var(--gold-bright); }
+body.home .site-header.is-scrolled .nav-links a:not(.nav-cta){ color:var(--gold-bright); }
 
 /* buttons — outline style, no fill, matching ACIPL's "Enquire Now" */
 body.home .btn{ border-color:var(--acipl-ink); color:var(--acipl-ink); }
@@ -872,7 +879,7 @@ body.home .hero{ min-height:85vh; display:block; background:#fff; }
 body.home .hero .hero-photo{ position:absolute; inset:0; width:100%; height:100%; right:0; top:0; transform:none; }
 
 /* photo placeholders — pale ice-blue tint instead of the dashed cream box */
-body.home .photo-placeholder{ background:var(--acipl-tint); border:1px solid var(--acipl-line); color:var(--acipl-body); }
+body.home .about-photo-wrap{ background:var(--acipl-tint); border-color:var(--acipl-line); }
 
 /* about split — grey quote emphasis, neutral divider */
 body.home .about-split__quote{ border-left-color:var(--acipl-line); }
