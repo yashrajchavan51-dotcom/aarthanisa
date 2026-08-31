@@ -169,7 +169,7 @@ button{ font-family:inherit; }
   display:inline-block;
 }
 .section{ padding:clamp(64px,9vw,120px) 0; }
-.section--tight{ padding:clamp(40px,6vw,72px) 0; }
+.section--tight{ padding:clamp(40px,6vw,72px) 0 clamp(16px,2.5vw,28px); }
 /* content should sit close under the hero, not float in a big gap below it —
    only the top padding of the section immediately after a hero is reduced,
    spacing between every other section stays as it was */
@@ -834,6 +834,10 @@ button{ font-family:inherit; }
   display:block; font-family:var(--font-display); font-weight:600; font-size:22px;
   letter-spacing:.02em; color:var(--ink); margin-bottom:10px;
 }
+.impanelment-item .impanelment-logo{
+  display:block; height:44px; width:auto; max-width:100%;
+  object-fit:contain; margin-bottom:10px;
+}
 .impanelment-item .caption{ display:block; font-size:12.5px; line-height:1.55; color:var(--grey-text); }
 @media (max-width:900px){
   .impanelment-grid{ flex-wrap:wrap; }
@@ -958,8 +962,8 @@ body.theme-light .home-footer .legal-links a{ color:var(--acipl-body); }
 body.theme-light .home-footer .legal-links a:hover{ color:var(--acipl-ink); }
 body.theme-light .home-footer .copyright{ color:var(--acipl-body); }
 body.theme-light .home-footer .social-icons{ position:static; margin:0; justify-content:flex-end; }
-body.theme-light .home-footer .social-icons a{ border-color:var(--acipl-line); color:var(--acipl-ink); }
-body.theme-light .home-footer .social-icons a:hover{ background:var(--acipl-ink); border-color:var(--acipl-ink); color:#fff; }
+body.theme-light .home-footer .social-icons a{ border-color:var(--gold-bright); color:var(--gold-bright); }
+body.theme-light .home-footer .social-icons a:hover{ background:var(--gold-bright); border-color:var(--gold-bright); color:#fff; }
 @media (max-width:620px){
   body.theme-light .home-footer .legal-row{ flex-direction:column; align-items:flex-start; }
 }
