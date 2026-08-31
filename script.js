@@ -96,25 +96,5 @@ if (contactForm) {
 // About section (home page): make the photo's bottom edge land exactly on
 // the text column's bottom edge (where "The Full Story" button ends),
 // instead of the image dictating its own height and overshooting it.
-function syncAboutPhotoHeight(){
-  const split = document.querySelector('.about-split');
-  const photoWrap = document.querySelector('.about-photo-wrap');
-  if (!split || !photoWrap) return;
-  if (window.matchMedia('(max-width: 820px)').matches) {
-    photoWrap.style.height = ''; // let the mobile CSS value apply instead
-    return;
-  }
-  const left = split.children[0];
-  const quote = document.querySelector('.about-split__quote blockquote');
-  if (!left || !quote) return;
-  const leftBottom = left.getBoundingClientRect().bottom;
-  const quoteBottom = quote.getBoundingClientRect().bottom;
-  const gap = parseFloat(getComputedStyle(photoWrap).marginTop) || 0;
-  const available = leftBottom - quoteBottom - gap;
-  photoWrap.style.height = available > 100 ? available + 'px' : '';
-}
-window.addEventListener('load', syncAboutPhotoHeight);
-window.addEventListener('resize', syncAboutPhotoHeight);
-if (document.fonts && document.fonts.ready) {
-  document.fonts.ready.then(syncAboutPhotoHeight);
-}
+// (about-section photo now uses a fixed generous size in CSS instead of
+// being height-matched to the text column — see .about-photo-wrap)
