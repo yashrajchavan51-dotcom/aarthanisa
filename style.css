@@ -81,6 +81,16 @@
   --pad: clamp(24px, 5vw, 72px);
 
   --ease: cubic-bezier(.22,.61,.36,1);
+
+  /* home-page-only palette (ACIPL reference): white ground, charcoal type,
+     navy as a restrained brand accent, pale ice-blue as a secondary tint.
+     Scoped entirely under body.home so about/projects/contact keep the
+     grey+gold theme untouched. */
+  --acipl-navy:  #1B2B4D;
+  --acipl-ink:   #2E2E2E;
+  --acipl-body:  #6E6E6E;
+  --acipl-line:  #E2E2E2;
+  --acipl-tint:  #E3F1F3;
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
@@ -838,3 +848,97 @@ button{ font-family:inherit; }
 .home-footer .social-icons a:hover{ background:var(--accent-gold); color:var(--dark); border-color:var(--accent-gold); }
 .home-footer .social-icons svg{ width:16px; height:16px; }
 @media (min-width:640px){ .home-footer .social-icons{ position:absolute; right:var(--pad); bottom:32px; margin-top:0; } }
+
+/* ================= HOME PAGE PALETTE (scoped to body.home only) ================= */
+body.home{ background:#fff; }
+body.home .lede{ color:var(--acipl-body); }
+
+/* labels — the one place navy carries the old gold's job */
+body.home .eyebrow{ color:var(--acipl-navy); }
+body.home .eyebrow::before{ background:var(--acipl-navy); }
+
+/* header + nav, only while a home-page body is behind it */
+body.home .logo-word em,
+body.home .site-header.is-scrolled .logo-word em{ color:var(--acipl-navy); }
+body.home .nav-links a::after{ background:var(--acipl-navy); }
+body.home .nav-links a.is-active{ color:var(--acipl-navy); }
+body.home .nav-links a.nav-cta{ background:transparent; border:1px solid var(--acipl-ink); color:var(--acipl-ink); }
+body.home .nav-links a.nav-cta:hover{ background:var(--acipl-ink); color:#fff; }
+body.home .site-header.is-scrolled .nav-links a.nav-cta{ border-color:var(--acipl-ink); background:transparent; color:var(--acipl-ink); }
+body.home .site-header.is-scrolled .nav-links a.nav-cta:hover{ background:var(--acipl-ink); color:#fff; }
+
+/* buttons — outline style, no fill, matching ACIPL's "Enquire Now" */
+body.home .btn{ border-color:var(--acipl-ink); color:var(--acipl-ink); }
+body.home .btn:hover{ background:var(--acipl-ink); border-color:var(--acipl-ink); color:#fff; }
+body.home .btn--gold{ background:transparent; border:1px solid var(--acipl-ink); color:var(--acipl-ink); }
+body.home .btn--on-dark{ border-color:var(--acipl-ink); color:var(--acipl-ink); }
+
+/* hero — light ground, navy replaces gold on the kicker + headline emphasis */
+body.home .hero{ background:#fff; }
+body.home .hero-kicker{ color:var(--acipl-navy); }
+body.home .hero-kicker::before{ background:var(--acipl-navy); }
+body.home .hero h1 em{ color:var(--acipl-navy); }
+body.home .hero-sub{ color:var(--acipl-body); }
+body.home .hero-coords{ color:var(--acipl-body); }
+body.home .hero-coords b{ color:var(--acipl-ink); }
+
+/* photo placeholders — pale ice-blue tint instead of the dashed cream box */
+body.home .photo-placeholder{ background:var(--acipl-tint); border:1px solid var(--acipl-line); color:var(--acipl-body); }
+
+/* about split — navy quote emphasis, neutral divider */
+body.home .about-split__quote{ border-left-color:var(--acipl-line); }
+body.home .about-split__quote blockquote em{ color:var(--acipl-navy); }
+
+/* meet the team — circular portraits, no card frame, matching ACIPL */
+body.home .founders{ background:transparent; border:none; padding:0; gap:48px; }
+body.home .founder{ background:transparent; box-shadow:none; padding:0; text-align:center; }
+body.home .founder-photo{
+  aspect-ratio:1/1; max-width:220px; margin:0 auto 24px; border-radius:50%;
+  border:1px solid var(--acipl-line); background:var(--acipl-tint); overflow:hidden;
+}
+body.home .founder-photo .initials{ color:var(--acipl-navy); }
+body.home .founder .role{ color:var(--acipl-body); }
+
+/* impanelments — charcoal marks, grey captions */
+body.home .impanelment-item .mark{ color:var(--acipl-ink); }
+body.home .impanelment-item .caption{ color:var(--acipl-body); }
+
+/* quote carousel — soft white type, small navy corner bracket */
+body.home .quote-carousel__slide{ padding-top:44px; }
+body.home .quote-carousel__slide::before{
+  content:""; position:absolute; top:0; left:50%; transform:translateX(-50%);
+  width:26px; height:26px;
+  border-top:2px solid rgba(255,255,255,.55); border-left:2px solid rgba(255,255,255,.55);
+}
+body.home .quote-carousel__slide span{ color:rgba(255,255,255,.75); }
+
+/* footer — rebuilt white/outline, matching ACIPL's "Get in Touch" band */
+body.home .home-footer{
+  background:#fff; color:var(--acipl-body); text-align:left;
+  border-top:1px solid var(--acipl-line); padding:clamp(48px,7vw,80px) 0 28px;
+}
+body.home .home-footer .footer-head{
+  display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:16px;
+  border-bottom:1px solid var(--acipl-line); padding-bottom:28px; margin-bottom:28px;
+}
+body.home .home-footer .footer-head h2{ font-size:clamp(24px,3vw,32px); color:var(--acipl-ink); margin:0; }
+body.home .home-footer .since{ font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--acipl-body); white-space:nowrap; }
+body.home .home-footer .since b{ color:var(--acipl-ink); font-family:var(--font-display); font-size:16px; }
+body.home .home-footer address{ font-style:normal; color:var(--acipl-body); line-height:1.7; margin-bottom:28px; }
+body.home .home-footer address a{ color:var(--acipl-body); }
+body.home .home-footer address a:hover{ color:var(--acipl-navy); }
+body.home .home-footer .btn{ display:inline-flex; }
+body.home .home-footer .legal-row{
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+  margin-top:48px;
+}
+body.home .home-footer .legal-links{ justify-content:flex-start; margin:0; color:var(--acipl-body); }
+body.home .home-footer .legal-links a{ color:var(--acipl-body); }
+body.home .home-footer .legal-links a:hover{ color:var(--acipl-navy); }
+body.home .home-footer .copyright{ color:var(--acipl-body); }
+body.home .home-footer .social-icons{ position:static; margin:0; justify-content:flex-end; }
+body.home .home-footer .social-icons a{ border-color:var(--acipl-line); color:var(--acipl-ink); }
+body.home .home-footer .social-icons a:hover{ background:var(--acipl-ink); border-color:var(--acipl-ink); color:#fff; }
+@media (max-width:620px){
+  body.home .home-footer .legal-row{ flex-direction:column; align-items:flex-start; }
+}
