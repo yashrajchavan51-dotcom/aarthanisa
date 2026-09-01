@@ -202,7 +202,7 @@ button{ font-family:inherit; }
   cursor:pointer;
   position:relative;
   overflow:hidden;
-  transition:background .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease);
+  transition:background .35s var(--ease), color .35s var(--ease), border-color .35s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
 }
 .btn:hover{ background:var(--gold-fill); border-color:var(--gold-fill); color:var(--dark); }
 .btn--gold{ border-color:var(--gold-fill); background:var(--gold-fill); color:var(--dark); font-weight:700; }
@@ -615,9 +615,9 @@ button{ font-family:inherit; }
 .project-feature{
   display:grid; grid-template-columns:1.15fr 1fr; gap:clamp(28px,4vw,56px);
   padding:clamp(28px,4vw,44px) 0; border-top:1px solid var(--grey-line);
-  align-items:center;
+  align-items:center; transition:border-color .3s var(--ease);
 }
-.project-list .project-feature:last-child{ border-bottom:1px solid var(--grey-line); }
+.project-list .project-feature:last-child{ border-bottom:1px solid var(--grey-line); transition:border-color .3s var(--ease); }
 .pf-media{
   display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr; gap:8px;
   aspect-ratio:16/11;
@@ -889,10 +889,11 @@ button{ font-family:inherit; }
 /* ================= HOME PAGE PALETTE (scoped to body.theme-light only) ================= */
 body.theme-light{ background:#fff; }
 body.theme-light .lede{ color:var(--acipl-body); }
+body.theme-light .lede em{ color:var(--gold-bright); font-style:italic; }
 
 /* labels — grey, not navy or gold, per feedback */
 body.theme-light .eyebrow{ color:var(--acipl-ink); }
-body.theme-light .eyebrow::before{ background:var(--acipl-ink); }
+body.theme-light .eyebrow::before{ background:var(--gold-bright); }
 
 /* navbar text — gold throughout (not just the active link), per feedback.
    The CTA button is excluded: it's a solid gold fill, so its own text
@@ -902,12 +903,17 @@ body.theme-light .site-header.is-scrolled .nav-links a:not(.nav-cta){ color:var(
 
 /* buttons — outline style, no fill, matching ACIPL's "Enquire Now" */
 body.theme-light .btn{ border-color:var(--acipl-ink); color:var(--acipl-ink); }
-body.theme-light .btn:hover{ background:var(--acipl-ink); border-color:var(--acipl-ink); color:#fff; }
+body.theme-light .btn:hover{ background:var(--acipl-ink); border-color:var(--acipl-ink); color:#fff; transform:translateY(-2px); box-shadow:0 6px 16px rgba(0,0,0,.14); }
 body.theme-light .btn--gold{ background:transparent; border:1px solid var(--acipl-ink); color:var(--acipl-ink); }
 body.theme-light .btn--on-dark{ border-color:var(--acipl-ink); color:var(--acipl-ink); }
 
 /* hero — just the full-bleed photo slot, nothing else (matches ACIPL) */
 body.theme-light .hero{ min-height:85vh; display:block; background:#fff; }
+body.theme-light .hero::after{
+  content:""; position:absolute; top:0; left:0; right:0; height:180px;
+  background:linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,0));
+  pointer-events:none; z-index:1;
+}
 body.theme-light .hero .hero-photo{ position:absolute; inset:0; width:100%; height:100%; right:0; top:0; transform:none; }
 
 /* photo placeholders — pale ice-blue tint instead of the dashed cream box */
@@ -922,7 +928,7 @@ body.theme-light .founder-photo{
 }
 body.theme-light .founder-photo::after{ content:none; }
 body.theme-light .founder-photo .initials{ color:var(--acipl-ink); }
-body.theme-light .founder .role{ color:var(--acipl-body); }
+body.theme-light .founder .role{ color:var(--gold-bright); }
 
 /* impanelments — charcoal marks, grey captions */
 body.theme-light .impanelment-item .mark{ color:var(--acipl-ink); }
@@ -948,7 +954,7 @@ body.theme-light .home-footer .footer-head{
 }
 body.theme-light .home-footer .footer-head h2{ font-size:clamp(24px,3vw,32px); color:var(--acipl-ink); margin:0; }
 body.theme-light .home-footer .since{ font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:var(--acipl-body); white-space:nowrap; }
-body.theme-light .home-footer .since b{ color:var(--acipl-ink); font-family:var(--font-display); font-size:16px; }
+body.theme-light .home-footer .since b{ color:var(--gold-bright); font-family:var(--font-display); font-size:16px; }
 body.theme-light .home-footer address{ font-style:normal; color:var(--acipl-body); line-height:1.7; margin-bottom:28px; }
 body.theme-light .home-footer address a{ color:var(--acipl-body); }
 body.theme-light .home-footer address a:hover{ color:var(--acipl-ink); }
@@ -984,6 +990,8 @@ body.theme-light .filter-btn.is-active{ background:var(--acipl-ink); border-colo
 body.theme-light .pf-tile,
 body.theme-light .pf-tile.pf-map{ background:var(--acipl-tint); border-color:var(--acipl-line); }
 body.theme-light .pf-tile.pf-map::after{ border-color:var(--acipl-line); }
+body.theme-light .tag{ color:var(--gold-bright); }
+body.theme-light .project-feature:hover{ border-top-color:var(--gold-bright); }
 
 /* CTA band: white instead of the dark bronze accent, matching the rest of the page */
 body.theme-light .cta-band{ background:#fff; color:var(--acipl-body); border-top:1px solid var(--acipl-line); }
@@ -1002,5 +1010,5 @@ body.theme-light .form-field textarea,
 body.theme-light .form-field select{ background:#fff; border-color:var(--acipl-line); }
 body.theme-light .form-field input:focus,
 body.theme-light .form-field textarea:focus,
-body.theme-light .form-field select:focus{ border-color:var(--acipl-ink); }
+body.theme-light .form-field select:focus{ border-color:var(--acipl-ink); box-shadow:0 0 0 3px rgba(216,173,88,.25); }
 body.theme-light .map-wrap{ background:#fff; border-color:var(--acipl-line); }
