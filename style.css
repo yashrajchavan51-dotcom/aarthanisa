@@ -1455,13 +1455,21 @@ body.contact-page{ position:relative; }
   top:clamp(20px,6vh,96px);
   right:clamp(-260px,-11vw,-90px);
   width:min(66vw,920px);
-  z-index:-1;                 /* behind all content, above the page ground */
+  z-index:0;
   pointer-events:none;
   transform:rotate(-12deg);
-  opacity:.55;
+  opacity:.6;
   filter:drop-shadow(0 24px 38px rgba(30,30,30,.30));
 }
 .sheet-backdrop img{ width:100%; height:auto; display:block; }
+
+/* The sheet used to sit at z-index:-1. body doesn't establish a stacking
+   context, so a negative z-index put the sheet BEHIND body's own white
+   background and it never appeared at all. Instead the sheet stays at 0 and
+   every top-level block on the page is lifted to 1 — no reliance on how
+   negative z-index resolves against ancestor backgrounds. */
+body.contact-page > section,
+body.contact-page > footer{ position:relative; z-index:1; }
 
 /* the hero and the contact row have to be transparent for the sheet to show
    through — the light theme paints .page-hero solid white by default */
