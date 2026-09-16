@@ -1105,3 +1105,30 @@ h1, h2, h3, h4,
 body .section--about{ padding-bottom:clamp(36px,5vw,64px); }
 body .section--team{ padding-top:clamp(28px,4vw,52px); }
 body .section--team .founders{ margin-top:40px; }
+
+/* ---------- 4. quote band: the photo holds still, the page scrolls over it ----------
+   The image used to be an <img> filling the band, so it travelled with the
+   page. It's now a fixed background sized to the viewport: as you scroll, the
+   photo stays put and the band acts as a moving window over it, so a different
+   part of the image is framed at every scroll position.
+   background-attachment:fixed is unreliable on touch browsers (iOS Safari in
+   particular repaints it badly or drops the sizing), so those fall back to a
+   normal scrolling background — same photo, no parallax. */
+.quote-carousel{
+  min-height:clamp(420px,56vw,560px);
+  background-image:url('quote-bg.jpg');
+  background-repeat:no-repeat;
+  background-position:center center;
+  background-size:cover;
+  background-attachment:fixed;
+}
+/* safety net: if the old <img> markup is ever restored it would sit on top of
+   the fixed background and cancel the effect */
+.quote-carousel__bg{ display:none; }
+
+@media (hover:none), (max-width:820px){
+  .quote-carousel{ background-attachment:scroll; }
+}
+@media (prefers-reduced-motion:reduce){
+  .quote-carousel{ background-attachment:scroll; }
+}
