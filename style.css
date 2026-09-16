@@ -1534,3 +1534,159 @@ body.theme-light .enquiry-band .btn--gold:hover{
 .empanelment-badge{ border-color:var(--gold-line); }
 body.theme-light .empanelment-badge{ border-color:var(--gold); }
 body.theme-light .founder-photo{ border-color:var(--gold); }
+
+/* ---------- Meet Our Team: centred heading with a rule under it ----------
+   Only the heading block is centred — the founder bios keep the justified
+   setting used everywhere else on the site. */
+.section--team .team-title{
+  text-align:center;
+  max-width:none;
+  margin-bottom:0;
+}
+.title-rule{
+  display:block;
+  width:clamp(90px,9vw,130px);
+  height:2px;
+  background:var(--acipl-line);
+  margin:22px auto clamp(28px,3.4vw,48px);
+}
+.section--team .founders{ margin-top:0; }
+
+/* =========================================================
+   COLOUR / BACKGROUND PASS
+   The palette was right but almost every section sat on plain white, so the
+   pages read flat. Sections now alternate between a pale blueprint wash, a
+   deeper stone wash and one deep navy band per page, which gives the scroll
+   a rhythm and tells the reader where one part of the page ends and the
+   next begins. Layout, content and photography are untouched.
+
+   Home:     hero photo → wash (About + Vision) → white (Team)
+             → stone (Empanelment) → DEEP NAVY (Expertise) → photo (Quote)
+             → wash (Footer)
+   Projects: wash (hero) → white (list) → DEEP NAVY (CTA) → wash (Footer)
+   Contact:  wash (hero + address/map) → DEEP NAVY (Enquiry) → wash (Footer)
+   ========================================================= */
+:root{
+  --wash-1:     #EFF4F9;   /* pale blueprint wash */
+  --wash-2:     #E4ECF3;   /* deeper stone wash */
+  --band-deep:  #102A3E;   /* the one dark band per page */
+  --band-deep-2:#16384F;
+}
+
+/* ---------- home: About + Vision sit on one continuous wash ---------- */
+body.theme-light .section--about,
+body.theme-light .section--vision{ background:var(--wash-1); }
+/* the panels invert to white so they lift off the wash instead of sinking */
+body.theme-light .feature-band{ background:#fff; box-shadow:0 2px 14px rgba(22,32,43,.06); }
+body.theme-light .feature-band__media{ background:var(--wash-1); }
+
+/* ---------- home: Team stays white, so the wash above reads as a block --- */
+body.theme-light .section--team{ background:#fff; }
+
+/* ---------- home: Empanelment on the deeper stone wash ---------- */
+body.theme-light .section--empanelment{
+  background:var(--wash-2);
+  padding-bottom:clamp(40px,5.5vw,72px);
+}
+/* white circles on a tinted ground need no ring to separate them, so the
+   border softens and the shadow does the work */
+body.theme-light .section--empanelment .empanelment-badge{
+  border-color:rgba(29,78,115,.22);
+  box-shadow:0 4px 14px rgba(22,32,43,.10);
+}
+
+/* ---------- home: Expertise is the dark band ---------- */
+body.theme-light .section--expertise{
+  background:linear-gradient(162deg, var(--band-deep-2), var(--band-deep));
+  color:var(--accent-muted);
+}
+body.theme-light .section--expertise .band-title{ color:var(--accent-ink); }
+body.theme-light .section--expertise .band-title .dots{ color:var(--gold-fill-2); }
+body.theme-light .section--expertise .band-lead{ color:var(--accent-muted); }
+body.theme-light .section--expertise .expertise-grid{
+  background:transparent;
+  border-color:rgba(241,245,249,.18);
+}
+body.theme-light .section--expertise .expertise-card{ border-right-color:rgba(241,245,249,.18); }
+body.theme-light .section--expertise .expertise-card:hover{ background:rgba(241,245,249,.055); }
+body.theme-light .section--expertise .expertise-ico{ color:var(--gold-fill-2); }
+body.theme-light .section--expertise .expertise-card h3{ color:var(--accent-ink); }
+body.theme-light .section--expertise .expertise-card p{ color:var(--accent-muted); }
+body.theme-light .section--expertise .expertise-num{
+  border-color:rgba(241,245,249,.30);
+  color:var(--gold-fill-2);
+}
+@media (max-width:980px){
+  body.theme-light .section--expertise .expertise-card:nth-child(-n+2){
+    border-bottom-color:rgba(241,245,249,.18);
+  }
+}
+@media (max-width:600px){
+  body.theme-light .section--expertise .expertise-card{ border-bottom-color:rgba(241,245,249,.18); }
+}
+
+/* ---------- projects page ---------- */
+body.theme-light .page-hero{ background:var(--wash-1); }
+/* the CTA band becomes the dark moment on this page */
+body.theme-light .cta-band{
+  background:linear-gradient(162deg, var(--band-deep-2), var(--band-deep));
+  color:var(--accent-muted);
+  border-top:none;
+}
+body.theme-light .cta-band .eyebrow{ color:var(--gold-fill-2); }
+body.theme-light .cta-band .eyebrow::before{ background:var(--gold-fill-2); }
+body.theme-light .cta-band h2{ color:var(--accent-ink); }
+body.theme-light .cta-band .lede{ color:var(--accent-muted); }
+body.theme-light .cta-band .btn--gold{
+  background:var(--gold-fill); border-color:var(--gold-fill); color:var(--dark);
+}
+body.theme-light .cta-band .btn--gold:hover{
+  background:var(--gold-fill-2); border-color:var(--gold-fill-2); color:var(--band-deep);
+}
+/* The project list sits on the wash and each row becomes a white card. A
+   zebra stripe would have been simpler but nth-child keeps counting rows
+   the filter has hidden, so the banding would scramble as soon as anyone
+   clicked Interior or Concepts. Cards are immune to that. */
+body.theme-light .section--projects{ background:var(--wash-1); }
+body.theme-light .project-feature{
+  background:#fff;
+  border:1px solid var(--acipl-line);
+  padding:clamp(20px,2.6vw,32px);
+  margin-bottom:clamp(14px,1.6vw,20px);
+  box-shadow:0 2px 12px rgba(22,32,43,.05);
+  transition:border-color .3s var(--ease), box-shadow .3s var(--ease), transform .3s var(--ease);
+}
+body.theme-light .project-list .project-feature:last-child{
+  border:1px solid var(--acipl-line);
+  margin-bottom:0;
+}
+body.theme-light .project-feature:hover{
+  border-color:var(--gold);
+  box-shadow:0 12px 28px rgba(22,32,43,.12);
+  transform:translateY(-3px);
+}
+
+/* ---------- contact page ---------- */
+/* the wash sits on body so the tilted sheet (z-index:0) still reads over it */
+body.contact-page{ background:var(--wash-1); }
+body.contact-page .page-hero,
+body.contact-page .contact-top{ background:transparent; }
+/* the address card was a pale wash on white; on a washed ground it inverts
+   to white so it keeps its lift */
+body.contact-page .contact-card{
+  background:#fff;
+  box-shadow:0 3px 16px rgba(22,32,43,.07);
+}
+
+/* ---------- footer: closes every page on the pale wash ---------- */
+body.theme-light .home-footer{
+  background:var(--wash-1);
+  border-top:1px solid rgba(29,78,115,.16);
+}
+
+/* ---------- scrolled header: frosted pale blue instead of flat grey ------ */
+.site-header.is-scrolled{
+  background:rgba(239,244,249,.88);
+  border-bottom-color:rgba(29,78,115,.18);
+}
+body.home .site-header.is-scrolled{ background:rgba(239,244,249,.92); }
