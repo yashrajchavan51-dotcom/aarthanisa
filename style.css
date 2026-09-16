@@ -827,23 +827,37 @@ button{ font-family:inherit; }
 }
 .about-photo-wrap img{ max-width:100%; max-height:100%; width:auto; height:auto; object-fit:contain; display:block; }
 
-/* impanelments — open marks (no circular badge), caption below each */
-.impanelment-grid{ display:flex; flex-wrap:nowrap; gap:clamp(20px,2.6vw,40px); margin-top:40px; }
-.impanelment-item{ flex:1 1 0; min-width:0; }
-.impanelment-item .mark{
-  display:block; font-family:var(--font-display); font-weight:600; font-size:22px;
-  letter-spacing:.02em; color:var(--ink); margin-bottom:10px;
+/* empanelment — every mark sits in an identical circular badge, five across,
+   caption below each. The badges are a fixed square (so a tall civic crest and
+   a wide wordmark both end up the same footprint) and the logo inside is
+   contained with padding so nothing touches the ring. */
+.empanelment-grid{ display:flex; flex-wrap:nowrap; gap:clamp(20px,2.6vw,40px); margin-top:40px; }
+.empanelment-item{ flex:1 1 0; min-width:0; }
+.empanelment-badge{
+  display:flex; align-items:center; justify-content:center;
+  width:clamp(84px,8.4vw,112px); aspect-ratio:1/1;
+  margin:0 auto 16px; padding:14px;
+  border-radius:50%;
+  background:#fff;
+  border:1px solid var(--gold-line);
+  box-shadow:0 2px 10px rgba(0,0,0,.08);
+  overflow:hidden;
 }
-.impanelment-item .impanelment-logo{
-  display:block; height:44px; width:auto; max-width:100%;
-  object-fit:contain; margin:0 auto 10px;
+.empanelment-badge img{
+  width:100%; height:100%;
+  object-fit:contain;
 }
-.impanelment-item .caption{ display:block; font-size:12.5px; line-height:1.55; color:var(--grey-text); }
+.empanelment-badge .mark{
+  font-family:var(--font-display); font-weight:600;
+  font-size:clamp(15px,1.5vw,19px); letter-spacing:.02em;
+  color:var(--ink); line-height:1; text-align:center;
+}
+.empanelment-item .caption{ display:block; font-size:12.5px; line-height:1.55; color:var(--grey-text); }
 @media (max-width:900px){
-  .impanelment-grid{ flex-wrap:wrap; }
-  .impanelment-item{ flex:1 1 220px; min-width:220px; }
+  .empanelment-grid{ flex-wrap:wrap; justify-content:center; }
+  .empanelment-item{ flex:1 1 220px; min-width:220px; }
 }
-@media (max-width:560px){ .impanelment-item{ flex:1 1 100%; min-width:0; } }
+@media (max-width:560px){ .empanelment-item{ flex:1 1 100%; min-width:0; } }
 
 /* rotating quote carousel over a photo background, ACIPL-style */
 .quote-carousel{ position:relative; min-height:clamp(360px,48vw,480px); display:flex; align-items:center; justify-content:center; overflow:hidden; }
@@ -930,9 +944,10 @@ body.theme-light .founder-photo::after{ content:none; }
 body.theme-light .founder-photo .initials{ color:var(--acipl-ink); }
 body.theme-light .founder .role{ color:var(--gold-bright); }
 
-/* impanelments — charcoal marks, grey captions */
-body.theme-light .impanelment-item .mark{ color:var(--acipl-ink); }
-body.theme-light .impanelment-item .caption{ color:var(--acipl-body); }
+/* empanelment — charcoal marks, grey captions */
+body.theme-light .empanelment-badge{ border-color:var(--gold-bright); }
+body.theme-light .empanelment-badge .mark{ color:var(--acipl-ink); }
+body.theme-light .empanelment-item .caption{ color:var(--acipl-body); }
 
 /* quote carousel — soft white type, small navy corner bracket */
 body.theme-light .quote-carousel__slide{ padding-top:44px; }
@@ -1067,7 +1082,7 @@ p,
 .lede,
 address,
 .founder p,
-.impanelment-item .caption,
+.empanelment-item .caption,
 .info-row p,
 .pf-meta p,
 .value-item p,
