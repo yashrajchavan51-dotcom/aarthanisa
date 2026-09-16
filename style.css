@@ -1227,6 +1227,21 @@ body.theme-light .contact-split .map-wrap{ border-color:var(--gold-line); backgr
 }
 .enquiry-band .eyebrow{ color:var(--accent-gold); }
 .enquiry-band .eyebrow::before{ background:var(--accent-gold); }
+/* body.theme-light .eyebrow sets a dark charcoal, and it outranks the two
+   rules above — on the bronze band that made this label almost invisible.
+   Overridden here, and pushed up in size and brightness so it reads as a
+   proper section label rather than a whisper. */
+body.theme-light .enquiry-band .eyebrow{
+  color:#F2D9A0;
+  font-size:13.5px;
+  letter-spacing:.2em;
+  font-weight:700;
+  margin-bottom:18px;
+}
+body.theme-light .enquiry-band .eyebrow::before{
+  background:#F2D9A0;
+  width:30px; height:2px;
+}
 .enquiry-band h2{
   color:var(--accent-ink);
   font-size:clamp(28px,3.6vw,42px);
@@ -1289,4 +1304,139 @@ body.theme-light .enquiry-band .btn--gold:hover{
 
 @media (max-width:680px){
   .enquiry-form{ grid-template-columns:1fr; }
+}
+
+/* =========================================================
+   CLIENT REVISION — HOME: ABOUT / VISION / EXPERTISE
+   ========================================================= */
+
+/* ---------- shared heading treatment ----------
+   "Word . . ." — the same convention the footer already uses for
+   "Get in Touch . . .", so the page reads as one voice. */
+.band-title{
+  font-size:clamp(26px,3.2vw,38px);
+  color:var(--acipl-ink);
+  margin-bottom:10px;
+}
+.band-title .dots{
+  color:var(--gold-bright);
+  letter-spacing:.06em;
+  margin-left:2px;
+}
+.band-lead{
+  color:var(--acipl-body);
+  font-size:clamp(16px,1.35vw,18px);
+  max-width:56ch;
+  margin-bottom:8px;
+}
+
+/* ---------- About / Vision panels ----------
+   Image on one side, copy vertically centred on the other, both inside a
+   soft grey panel. --flip mirrors the pair so the two stacked bands read
+   as a rhythm rather than the same block twice. */
+.feature-band{
+  display:grid;
+  grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr);
+  align-items:stretch;
+  background:#F0F0F0;
+  border:1px solid var(--acipl-line);
+}
+.feature-band--flip{ grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr); }
+.feature-band--flip .feature-band__media{ order:2; }
+.feature-band--flip .feature-band__body{ order:1; }
+
+.feature-band__media{
+  background:#fff;
+  display:flex; align-items:center; justify-content:center;
+  overflow:hidden;
+  min-height:clamp(300px,34vw,440px);
+  padding:clamp(14px,1.8vw,26px);
+}
+.feature-band__media img{
+  width:100%; height:100%;
+  max-height:clamp(300px,34vw,440px);
+  object-fit:contain;
+}
+/* the Vision photo is a photograph rather than a line drawing, so it fills
+   its half edge to edge instead of sitting letterboxed */
+.feature-band--flip .feature-band__media{ padding:0; }
+.feature-band--flip .feature-band__media img{ height:100%; max-height:none; object-fit:cover; }
+
+.feature-band__body{
+  display:flex; flex-direction:column; justify-content:center;
+  padding:clamp(28px,3.6vw,52px);
+}
+.feature-band__body p{ color:var(--acipl-body); margin-bottom:1em; }
+.feature-band__body p:last-child{ margin-bottom:0; }
+.feature-band__body .band-lead{
+  color:var(--gold-2);
+  font-size:clamp(17px,1.5vw,20px);
+  margin-bottom:20px;
+  text-align:left;
+}
+.feature-band__body em{ color:var(--gold-2); font-style:italic; }
+
+@media (max-width:880px){
+  .feature-band,
+  .feature-band--flip{ grid-template-columns:1fr; }
+  .feature-band--flip .feature-band__media{ order:1; }
+  .feature-band--flip .feature-band__body{ order:2; }
+  .feature-band__media{ min-height:0; }
+  .feature-band__media img{ max-height:300px; }
+  .feature-band--flip .feature-band__media img{ height:260px; }
+}
+
+/* Vision follows About directly, so the join is tightened the same way the
+   About → Team join was */
+body .section--vision{ padding-top:clamp(24px,3.4vw,44px); padding-bottom:clamp(30px,4.2vw,56px); }
+
+/* ---------- Expertise ---------- */
+body .section--expertise{ padding-top:clamp(40px,5.5vw,76px); }
+.expertise-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+  margin-top:44px;
+  border:1px solid var(--acipl-line);
+  background:#fff;
+}
+.expertise-card{
+  position:relative;
+  padding:clamp(24px,2.6vw,34px) clamp(20px,2.2vw,30px) clamp(28px,3vw,38px);
+  border-right:1px solid var(--acipl-line);
+  transition:background .3s var(--ease);
+}
+.expertise-card:last-child{ border-right:none; }
+.expertise-card:hover{ background:rgba(138,106,35,.045); }
+.expertise-num{
+  position:absolute; top:clamp(20px,2.2vw,28px); right:clamp(18px,2vw,26px);
+  width:26px; height:26px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  border:1px solid var(--gold-line);
+  font-size:11px; font-weight:600; color:var(--gold-2);
+  line-height:1;
+}
+.expertise-ico{
+  display:block; width:clamp(44px,4.4vw,56px); height:clamp(44px,4.4vw,56px);
+  color:var(--acipl-navy);
+  margin-bottom:26px;
+}
+.expertise-ico svg{ width:100%; height:100%; }
+.expertise-card h3{
+  font-size:clamp(17px,1.6vw,20px);
+  color:var(--acipl-ink);
+  margin-bottom:10px;
+}
+.expertise-card p{
+  font-size:13.5px; line-height:1.6; color:var(--acipl-body); margin:0;
+}
+@media (max-width:980px){
+  .expertise-grid{ grid-template-columns:repeat(2,1fr); }
+  .expertise-card:nth-child(2n){ border-right:none; }
+  .expertise-card:nth-child(-n+2){ border-bottom:1px solid var(--acipl-line); }
+}
+@media (max-width:600px){
+  .expertise-grid{ grid-template-columns:1fr; }
+  .expertise-card{ border-right:none; border-bottom:1px solid var(--acipl-line); }
+  .expertise-card:last-child{ border-bottom:none; }
 }
