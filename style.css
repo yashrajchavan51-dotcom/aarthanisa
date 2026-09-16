@@ -1012,3 +1012,96 @@ body.theme-light .form-field input:focus,
 body.theme-light .form-field textarea:focus,
 body.theme-light .form-field select:focus{ border-color:var(--acipl-ink); box-shadow:0 0 0 3px rgba(216,173,88,.25); }
 body.theme-light .map-wrap{ background:#fff; border-color:var(--acipl-line); }
+
+/* =========================================================
+   CLIENT REVISION — ROUND 1
+   1. home hero photo blends into the header
+   2. justified body copy site-wide
+   3. About → Meet the team: divider removed, spacing retuned
+   ========================================================= */
+
+/* ---------- 1. hero photo blends into the header ----------
+   The top of the hero photo is bright dusk sky, so the header used to read
+   as a separate bar sitting on top of a hard-edged image. A tall, multi-stop
+   scrim sinks the top band of the photo instead, and the logo + nav type
+   switch to light while they're over it. The moment the header gains its own
+   background (.is-scrolled) every original dark treatment takes over again,
+   and the inner pages are untouched — all of this is scoped to body.home. */
+body.home .hero{ position:relative; }
+body.home .hero::after{
+  height:clamp(190px,30vh,300px);
+  background:linear-gradient(to bottom,
+    rgba(14,12,9,.72) 0%,
+    rgba(14,12,9,.50) 32%,
+    rgba(14,12,9,.22) 64%,
+    rgba(14,12,9,0)   100%);
+}
+body.home .site-header:not(.is-scrolled) .logo-word{ color:#F7F5F0; }
+body.home .site-header:not(.is-scrolled) .logo-word em{ color:var(--gold-fill-2); }
+body.home .site-header:not(.is-scrolled) .logo-sub{ color:rgba(247,245,240,.74); }
+body.home .site-header:not(.is-scrolled) .logo-badge{
+  border-color:rgba(216,173,88,.72);
+  background:rgba(247,245,240,.10);
+}
+/* the house outline inside the mark is a dark inline stroke — lift it too */
+body.home .site-header:not(.is-scrolled) .logo-mark path[stroke="#1C1C1C"]{ stroke:#F7F5F0; }
+body.home.theme-light .site-header:not(.is-scrolled) .nav-links a:not(.nav-cta){ color:var(--gold-fill-2); }
+body.home .site-header:not(.is-scrolled) .nav-toggle span{ background:#F7F5F0; }
+body.home .site-header:not(.is-scrolled) .logo-word,
+body.home .site-header:not(.is-scrolled) .logo-sub,
+body.home .site-header:not(.is-scrolled) .nav-links a:not(.nav-cta){
+  text-shadow:0 1px 12px rgba(0,0,0,.45);
+}
+/* once the dropdown panel is open it has its own solid bronze background,
+   so the over-photo treatment must not leak into it */
+body.home .site-header:not(.is-scrolled) .nav-links.is-open a{
+  color:var(--accent-muted) !important;
+  text-shadow:none;
+}
+body.home .site-header:not(.is-scrolled) .nav-links.is-open a.is-active{ color:var(--accent-gold) !important; }
+
+/* ---------- 2. justified body copy site-wide ----------
+   Applied to running paragraph text only. hyphens:auto keeps justified
+   lines from opening up into rivers on narrow columns. */
+p,
+.lede,
+address,
+.founder p,
+.impanelment-item .caption,
+.info-row p,
+.pf-meta p,
+.value-item p,
+.process-box p,
+.exp-card p{
+  text-align:justify;
+  text-justify:inter-word;
+  -webkit-hyphens:auto;
+  hyphens:auto;
+}
+/* single-line labels, centred display type and button text are excluded —
+   justifying a one-line element just stretches it across the column */
+h1, h2, h3, h4,
+.eyebrow, .tag, .loc, .btn, .filter-btn,
+.pf-specs dt, .pf-specs dd,
+.founder h3, .founder .role,
+.quote-carousel__slide p, .quote-carousel__slide span,
+.cta-band h2, .cta-band .lede,
+.philosophy blockquote, .name-teaser blockquote,
+.testimonial p, .testimonial .who,
+.home-footer .footer-head h2, .home-footer .since,
+.home-footer .legal-links, .home-footer .copyright,
+.form-field label, .form-note, .nav-panel-head{
+  text-align:inherit;
+  text-justify:auto;
+  -webkit-hyphens:manual;
+  hyphens:manual;
+}
+
+/* ---------- 3. About → Meet the team ----------
+   The gold hairline that used to separate the two sections is gone (the
+   .grid-line-top class was removed from the markup). Without a rule to
+   carry the break, the stacked default padding left a dead gap, so both
+   sides of the join are pulled in and the sections now read as one flow. */
+body .section--about{ padding-bottom:clamp(36px,5vw,64px); }
+body .section--team{ padding-top:clamp(28px,4vw,52px); }
+body .section--team .founders{ margin-top:40px; }
