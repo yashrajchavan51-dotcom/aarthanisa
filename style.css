@@ -26,24 +26,24 @@
      --charcoal is a light grey used only for .section--dark's alternating
      band. --accent-bg is the ~20% that's deliberately NOT grey: the CTA
      bands and the footer. */
-  --grey:         #8C8C8C;
-  --header-grey:  #8C8C8C;
-  --ink:          #1E1E1E;
-  --charcoal:     #E6E6E6;
-  --charcoal-2:   #E6E6E6;
-  --charcoal-3:   #8C8C8C;
-  --paper:        #8C8C8C;
-  --paper-2:      #F0F0F0;
-  --paper-3:      #EBEBEB;
+  --grey:         #8A9099;
+  --header-grey:  #8A9099;
+  --ink:          #16202B;
+  --charcoal:     #E7EBEF;
+  --charcoal-2:   #E7EBEF;
+  --charcoal-3:   #8A9099;
+  --paper:        #8A9099;
+  --paper-2:      #F2F4F6;
+  --paper-3:      #EDF0F3;
   /* secondary/body copy — a solid dark tone (not translucent white/ink at
      low opacity) so it stays crisp against the mid-grey background rather
      than washing out */
-  --grey-text:  #262626;
-  --grey-line:  rgba(30,30,30,0.5);
+  --grey-text:  #2A3340;
+  --grey-line:  rgba(22,32,43,0.45);
 
   /* the deepest neutral — reserved for text that sits on top of a bright
      gold fill, where the contrast needs to flip */
-  --dark:       #161616;
+  --dark:       #F4F8FB;
 
   /* gold foil — the site's accent colour, kept exactly as an ACCENT: text,
      buttons and thin hairlines only, never a wash across a background.
@@ -52,13 +52,13 @@
      footer, CTA) it's a softer accent rather than a high-contrast one —
      --gold-fill/-2 stay bright since those are solid button fills and
      don't compete with the page background for contrast. */
-  --gold:        #8A6A23;
-  --gold-2:      #6E5419;
-  --gold-deep:   #52400F;
-  --gold-fill:   #C79A3D;
-  --gold-fill-2: #D8AD58;
-  --gold-soft:  rgba(138,106,35,0.12);
-  --gold-line:  rgba(138,106,35,0.4);
+  --gold:        #1D4E73;
+  --gold-2:      #163C58;
+  --gold-deep:   #102A3E;
+  --gold-fill:   #1D4E73;
+  --gold-fill-2: #5A97C4;
+  --gold-soft:  rgba(29,78,115,0.12);
+  --gold-line:  rgba(29,78,115,0.34);
 
   /* bright gold — for gold TEXT/accents that sit directly on the grey
      --paper/--header-grey backgrounds, where the deep --gold above reads
@@ -72,17 +72,17 @@
      every grey token above, paired with light, SOLID (never translucent)
      text tones so nothing washes out against it. */
   --accent-bg:     var(--gold-deep);
-  --accent-ink:    #F6F6F5;
-  --accent-muted:  #C7C0B2;
-  --accent-dim:    #98907E;
-  --accent-line:   rgba(246,246,245,.16);
+  --accent-ink:    #F1F5F9;
+  --accent-muted:  #B7C6D2;
+  --accent-dim:    #8398A8;
+  --accent-line:   rgba(241,245,249,.18);
   --accent-gold:   var(--gold-fill-2);
 
   /* card/panel fill — a soft, muted light grey rather than near-white, so
      large filled cards don't read as a glare against --paper. Still
      clearly lighter than --paper so panels keep their lift; the border +
      shadow on each card do the rest of the separating work. */
-  --cream:      #C8C8C8;
+  --cream:      #C6CDD4;
 
   --font-display: 'Absans', sans-serif;
   --font-body: 'Absans', sans-serif;
@@ -96,11 +96,11 @@
      navy as a restrained brand accent, pale ice-blue as a secondary tint.
      Scoped entirely under body.theme-light so about/projects/contact keep the
      grey+gold theme untouched. */
-  --acipl-navy:  #1B2B4D;
-  --acipl-ink:   #2E2E2E;
-  --acipl-body:  #6E6E6E;
-  --acipl-line:  #E2E2E2;
-  --acipl-tint:  #E3F1F3;
+  --acipl-navy:  #1D4E73;
+  --acipl-ink:   #16202B;
+  --acipl-body:  #5A6673;
+  --acipl-line:  #DCE2E8;
+  --acipl-tint:  #E8EEF3;
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
@@ -210,7 +210,7 @@ button{ font-family:inherit; }
 .btn--gold::after{
   content:"";
   position:absolute; top:0; left:-60%; width:40%; height:100%;
-  background:linear-gradient(115deg, transparent, rgba(217,212,196,0.4), transparent);
+  background:linear-gradient(115deg, transparent, rgba(226,238,248,0.45), transparent);
   transform:skewX(-18deg);
   transition:left .6s var(--ease);
   pointer-events:none;
@@ -251,7 +251,7 @@ button{ font-family:inherit; }
   border-bottom:1px solid transparent;
 }
 .site-header.is-scrolled{
-  background:rgba(140,140,140,0.7);
+  background:rgba(138,144,153,0.72);
   backdrop-filter:blur(18px) saturate(1.1);
   -webkit-backdrop-filter:blur(18px) saturate(1.1);
   padding:14px 0;
@@ -264,7 +264,7 @@ button{ font-family:inherit; }
   display:flex; align-items:center; justify-content:center;
   width:46px; height:46px; flex:none; border-radius:50%;
   border:1px solid var(--gold-line);
-  background:rgba(138,106,35,0.08);
+  background:rgba(29,78,115,0.08);
   transition:border-color .4s var(--ease), background .4s var(--ease);
 }
 .site-header.is-scrolled .logo-badge{ border-color:var(--gold-bright); background:var(--gold-soft); }
@@ -354,7 +354,7 @@ button{ font-family:inherit; }
   position:absolute; top:calc(100% + 12px); right:0;
   background:var(--accent-bg);
   border:none;
-  box-shadow:0 20px 44px rgba(28,28,28,.28);
+  box-shadow:0 20px 44px rgba(16,24,34,.30);
   padding:22px 26px; min-width:250px;
 }
 .site-header.is-scrolled .nav-links.is-open{
@@ -401,7 +401,7 @@ button{ font-family:inherit; }
     position:absolute; top:calc(100% + 12px); right:0;
     background:var(--accent-bg);
     border:none;
-    box-shadow:0 20px 44px rgba(28,28,28,.28);
+    box-shadow:0 20px 44px rgba(16,24,34,.30);
     padding:20px 24px; min-width:230px; max-width:82vw;
   }
   .nav-links.is-open{ display:flex; animation:navDropdownIn .22s var(--ease) both; }
@@ -475,7 +475,7 @@ button{ font-family:inherit; }
 .hero-actions{ display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
 .hero-coords{
   position:absolute; left:var(--pad); bottom:32px; z-index:2;
-  display:flex; gap:36px; color:rgba(38,35,29,0.55); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  display:flex; gap:36px; color:rgba(42,51,64,0.55); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
 }
 .hero-coords b{ display:block; color:var(--ink); font-family:var(--font-display); font-size:22px; font-weight:500; letter-spacing:0; text-transform:none; margin-bottom:2px;}
 @media (max-width:880px){
@@ -846,6 +846,8 @@ button{ font-family:inherit; }
 .empanelment-badge img{
   width:100%; height:100%;
   object-fit:contain;
+  object-position:center center;
+  margin:auto;
 }
 .empanelment-badge .mark{
   font-family:var(--font-display); font-weight:600;
@@ -862,7 +864,7 @@ button{ font-family:inherit; }
 /* rotating quote carousel over a photo background, ACIPL-style */
 .quote-carousel{ position:relative; min-height:clamp(360px,48vw,480px); display:flex; align-items:center; justify-content:center; overflow:hidden; }
 .quote-carousel__bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
-.quote-carousel__overlay{ position:absolute; inset:0; background:rgba(20,16,8,0.5); }
+.quote-carousel__overlay{ position:absolute; inset:0; background:rgba(11,20,30,0.52); }
 .quote-carousel__slide{
   position:absolute; inset:0; z-index:1; margin:auto;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -872,7 +874,7 @@ button{ font-family:inherit; }
 .quote-carousel__slide.is-active{ opacity:1; visibility:visible; }
 .quote-carousel__slide p{
   font-family:var(--font-display); font-style:italic; font-weight:400;
-  font-size:clamp(22px,3.2vw,36px); line-height:1.4; color:#F6F6F5; margin:0;
+  font-size:clamp(22px,3.2vw,36px); line-height:1.4; color:#F1F5F9; margin:0;
 }
 .quote-carousel__slide span{
   display:block; margin-top:18px; font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-fill-2);
@@ -1025,7 +1027,7 @@ body.theme-light .form-field textarea,
 body.theme-light .form-field select{ background:#fff; border-color:var(--acipl-line); }
 body.theme-light .form-field input:focus,
 body.theme-light .form-field textarea:focus,
-body.theme-light .form-field select:focus{ border-color:var(--acipl-ink); box-shadow:0 0 0 3px rgba(216,173,88,.25); }
+body.theme-light .form-field select:focus{ border-color:var(--acipl-ink); box-shadow:0 0 0 3px rgba(45,110,158,.26); }
 body.theme-light .map-wrap{ background:#fff; border-color:var(--acipl-line); }
 
 /* =========================================================
@@ -1046,22 +1048,22 @@ body.home .hero{ position:relative; }
 body.home .hero::after{
   height:clamp(190px,30vh,300px);
   background:linear-gradient(to bottom,
-    rgba(14,12,9,.72) 0%,
-    rgba(14,12,9,.50) 32%,
-    rgba(14,12,9,.22) 64%,
-    rgba(14,12,9,0)   100%);
+    rgba(9,16,25,.72) 0%,
+    rgba(9,16,25,.50) 32%,
+    rgba(9,16,25,.22) 64%,
+    rgba(9,16,25,0)   100%);
 }
-body.home .site-header:not(.is-scrolled) .logo-word{ color:#F7F5F0; }
+body.home .site-header:not(.is-scrolled) .logo-word{ color:#F2F6FA; }
 body.home .site-header:not(.is-scrolled) .logo-word em{ color:var(--gold-fill-2); }
-body.home .site-header:not(.is-scrolled) .logo-sub{ color:rgba(247,245,240,.74); }
+body.home .site-header:not(.is-scrolled) .logo-sub{ color:rgba(242,246,250,.76); }
 body.home .site-header:not(.is-scrolled) .logo-badge{
-  border-color:rgba(216,173,88,.72);
-  background:rgba(247,245,240,.10);
+  border-color:rgba(90,151,196,.75);
+  background:rgba(242,246,250,.12);
 }
 /* the house outline inside the mark is a dark inline stroke — lift it too */
-body.home .site-header:not(.is-scrolled) .logo-mark path[stroke="#1C1C1C"]{ stroke:#F7F5F0; }
+body.home .site-header:not(.is-scrolled) .logo-mark path[stroke="#16202B"]{ stroke:#F2F6FA; }
 body.home.theme-light .site-header:not(.is-scrolled) .nav-links a:not(.nav-cta){ color:var(--gold-fill-2); }
-body.home .site-header:not(.is-scrolled) .nav-toggle span{ background:#F7F5F0; }
+body.home .site-header:not(.is-scrolled) .nav-toggle span{ background:#F2F6FA; }
 body.home .site-header:not(.is-scrolled) .logo-word,
 body.home .site-header:not(.is-scrolled) .logo-sub,
 body.home .site-header:not(.is-scrolled) .nav-links a:not(.nav-cta){
@@ -1169,7 +1171,7 @@ body .section--team .founders{ margin-top:40px; }
 /* left: the address card. A warm gold wash lifts it off the white page
    without introducing a colour that isn't already in the palette. */
 .contact-card{
-  background:linear-gradient(170deg, rgba(138,106,35,.085), rgba(138,106,35,.015));
+  background:linear-gradient(170deg, rgba(29,78,115,.085), rgba(29,78,115,.015));
   border:1px solid var(--gold-line);
   border-top:3px solid var(--gold-fill);
   padding:clamp(26px,3.2vw,42px);
@@ -1232,14 +1234,14 @@ body.theme-light .contact-split .map-wrap{ border-color:var(--gold-line); backgr
    Overridden here, and pushed up in size and brightness so it reads as a
    proper section label rather than a whisper. */
 body.theme-light .enquiry-band .eyebrow{
-  color:#F2D9A0;
+  color:#BCD8EE;
   font-size:13.5px;
   letter-spacing:.2em;
   font-weight:700;
   margin-bottom:18px;
 }
 body.theme-light .enquiry-band .eyebrow::before{
-  background:#F2D9A0;
+  background:#BCD8EE;
   width:30px; height:2px;
 }
 .enquiry-band h2{
@@ -1272,8 +1274,8 @@ body.theme-light .enquiry-band .form-field label{
 body.theme-light .enquiry-band .form-field input,
 body.theme-light .enquiry-band .form-field textarea,
 body.theme-light .enquiry-band .form-field select{
-  background:#F8F7F3;
-  border:1px solid rgba(246,246,245,.28);
+  background:#F4F7FA;
+  border:1px solid rgba(241,245,249,.30);
   color:var(--ink);
   padding:13px 14px;
   box-shadow:none;
@@ -1282,10 +1284,10 @@ body.theme-light .enquiry-band .form-field input:focus,
 body.theme-light .enquiry-band .form-field textarea:focus,
 body.theme-light .enquiry-band .form-field select:focus{
   border-color:var(--gold-fill-2);
-  box-shadow:0 0 0 3px rgba(216,173,88,.32);
+  box-shadow:0 0 0 3px rgba(45,110,158,.30);
 }
 body.theme-light .enquiry-band .form-field input::placeholder,
-body.theme-light .enquiry-band .form-field textarea::placeholder{ color:#7A756B; }
+body.theme-light .enquiry-band .form-field textarea::placeholder{ color:#7C8896; }
 
 /* the outline button style the light theme applies everywhere would
    disappear against bronze, so the submit keeps its solid gold fill */
@@ -1338,7 +1340,7 @@ body.theme-light .enquiry-band .btn--gold:hover{
   display:grid;
   grid-template-columns:minmax(0,0.95fr) minmax(0,1.05fr);
   align-items:stretch;
-  background:#F0F0F0;
+  background:#F2F4F6;
   border:1px solid var(--acipl-line);
 }
 .feature-band--flip{ grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr); }
@@ -1407,7 +1409,7 @@ body .section--expertise{ padding-top:clamp(40px,5.5vw,76px); }
   transition:background .3s var(--ease);
 }
 .expertise-card:last-child{ border-right:none; }
-.expertise-card:hover{ background:rgba(138,106,35,.045); }
+.expertise-card:hover{ background:rgba(29,78,115,.045); }
 .expertise-num{
   position:absolute; top:clamp(20px,2.2vw,28px); right:clamp(18px,2vw,26px);
   width:26px; height:26px; border-radius:50%;
@@ -1459,7 +1461,7 @@ body.contact-page{ position:relative; }
   pointer-events:none;
   transform:rotate(-12deg);
   opacity:.6;
-  filter:drop-shadow(0 24px 38px rgba(30,30,30,.30));
+  filter:drop-shadow(0 24px 38px rgba(22,32,43,.30));
 }
 .sheet-backdrop img{ width:100%; height:auto; display:block; }
 
@@ -1488,3 +1490,47 @@ body.contact-page .contact-top{ background:transparent; }
 @media (prefers-reduced-motion:reduce){
   .sheet-backdrop{ transform:rotate(-12deg); }
 }
+
+/* =========================================================
+   PALETTE PASS — light-ground contrast corrections
+   The scheme is now graphite + drafting blue. --gold-fill-2 (#5A97C4) is
+   the BRIGHT accent and only belongs on dark grounds: the hero scrim, the
+   #102A3E enquiry band, the nav dropdown. On white it lands around 2.9:1,
+   so every light-ground use below is moved to the deep accent --gold
+   (#1D4E73, ~7:1 on white). Same hue family, legible weight.
+   ========================================================= */
+
+/* nav + wordmark on the white inner-page headers */
+body.theme-light .nav-links a:not(.nav-cta),
+body.theme-light .site-header.is-scrolled .nav-links a:not(.nav-cta){ color:var(--gold); }
+body.theme-light .logo-word em{ color:var(--gold); }
+/* the home page keeps the bright tone — it sits on the darkened photo */
+body.home.theme-light .site-header:not(.is-scrolled) .nav-links a:not(.nav-cta),
+body.home .site-header:not(.is-scrolled) .logo-word em{ color:var(--gold-fill-2); }
+/* ...and the open dropdown keeps its own on-dark treatment */
+body.home .site-header:not(.is-scrolled) .nav-links.is-open a:not(.nav-cta){ color:var(--accent-muted) !important; }
+
+/* small caps, tags and inline emphasis on white */
+body.theme-light .tag{ color:var(--gold); }
+body.theme-light .founder .role{ color:var(--gold); }
+body.theme-light .lede em{ color:var(--gold); }
+body.theme-light .home-footer .since b{ color:var(--gold); }
+.band-title .dots{ color:var(--gold); }
+body.theme-light .eyebrow::before{ background:var(--gold); }
+
+/* footer social icons: deep accent outline, deep accent fill on hover so the
+   white glyph inside keeps its contrast */
+body.theme-light .home-footer .social-icons a{ border-color:var(--gold); color:var(--gold); }
+body.theme-light .home-footer .social-icons a:hover{
+  background:var(--gold); border-color:var(--gold); color:#fff;
+}
+
+/* any accent FILL sitting behind text uses the deep tone, never the bright
+   one — --dark is now a near-white, so the fill has to carry the contrast */
+.btn--gold:hover{ background:var(--gold-2); border-color:var(--gold-2); color:var(--dark); }
+body.theme-light .enquiry-band .btn--gold:hover{
+  background:var(--gold-2); border-color:var(--gold-2); color:var(--dark);
+}
+.empanelment-badge{ border-color:var(--gold-line); }
+body.theme-light .empanelment-badge{ border-color:var(--gold); }
+body.theme-light .founder-photo{ border-color:var(--gold); }
