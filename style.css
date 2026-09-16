@@ -1147,3 +1147,146 @@ body .section--team .founders{ margin-top:40px; }
 @media (prefers-reduced-motion:reduce){
   .quote-carousel{ background-attachment:scroll; }
 }
+
+/* =========================================================
+   CLIENT REVISION — CONTACT PAGE
+   Address card and a full-colour, full-height map side by side,
+   then the enquiry form as its own band underneath. The page was
+   reading flat because every element was white-on-white with only
+   hairlines to separate them, so the weight now comes from three
+   distinct blocks: a warm tinted card, a live map, and one deep
+   bronze band carrying the form.
+   ========================================================= */
+
+/* ---------- address + map row ---------- */
+.contact-split{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:clamp(24px,3.2vw,48px);
+  align-items:stretch;
+}
+
+/* left: the address card. A warm gold wash lifts it off the white page
+   without introducing a colour that isn't already in the palette. */
+.contact-card{
+  background:linear-gradient(170deg, rgba(138,106,35,.085), rgba(138,106,35,.015));
+  border:1px solid var(--gold-line);
+  border-top:3px solid var(--gold-fill);
+  padding:clamp(26px,3.2vw,42px);
+}
+.contact-card .studio-name{
+  font-size:clamp(25px,3vw,34px);
+  color:var(--gold);
+  margin-bottom:22px;
+}
+.contact-card .info-row{ align-items:flex-start; border-top-color:var(--gold-line); }
+.contact-card .info-row:first-of-type{ border-top:none; padding-top:0; }
+.contact-card .info-row:last-child{ border-bottom:none; padding-bottom:0; }
+
+/* icons picked up the circular badge motif from the empanelment row */
+.info-ico{
+  flex:none;
+  width:40px; height:40px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:#fff;
+  border:1px solid var(--gold-line);
+  box-shadow:0 2px 8px rgba(0,0,0,.07);
+}
+.info-ico .ico{ width:17px; height:17px; margin-top:0; color:var(--gold); }
+.contact-card .info-row h4{ color:var(--ink); }
+.contact-card .info-row a{ color:var(--gold-2); border-bottom:1px solid var(--gold-line); }
+.contact-card .info-row a:hover{ color:var(--gold); border-bottom-color:var(--gold); }
+
+/* right: map fills the row, so it always matches the card's height */
+.contact-split .map-wrap{
+  margin-top:0;
+  height:100%;
+  min-height:440px;
+  border:1px solid var(--gold-line);
+  overflow:hidden;
+}
+/* the grayscale filter was most of why this page felt lifeless — the map
+   now shows in full colour, very slightly warmed to sit with the gold */
+.contact-split .map-wrap iframe{
+  height:100%; min-height:440px;
+  filter:saturate(1.06) contrast(1.02);
+}
+body.theme-light .contact-split .map-wrap{ border-color:var(--gold-line); background:#fff; }
+
+@media (max-width:880px){
+  .contact-split{ grid-template-columns:1fr; }
+  .contact-split .map-wrap{ min-height:0; height:auto; }
+  .contact-split .map-wrap iframe{ height:340px; min-height:0; }
+}
+
+/* ---------- enquiry band ---------- */
+.enquiry-band{
+  background:var(--accent-bg);
+  color:var(--accent-muted);
+  padding:clamp(48px,7vw,88px) 0 clamp(52px,7.5vw,92px);
+}
+.enquiry-band .eyebrow{ color:var(--accent-gold); }
+.enquiry-band .eyebrow::before{ background:var(--accent-gold); }
+.enquiry-band h2{
+  color:var(--accent-ink);
+  font-size:clamp(28px,3.6vw,42px);
+  margin-bottom:12px;
+}
+.enquiry-band .enquiry-lede{
+  color:var(--accent-muted);
+  max-width:52ch;
+  margin-bottom:36px;
+}
+
+/* two fields per row on wide screens, message spanning the full width */
+.enquiry-form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px clamp(20px,2.6vw,36px);
+}
+.enquiry-form .form-field{ margin-bottom:0; }
+.enquiry-form .form-field--wide,
+.enquiry-form .form-actions{ grid-column:1 / -1; }
+.enquiry-form textarea{ min-height:150px; }
+
+/* solid light fields on the bronze ground — highest contrast and the
+   easiest to fill in; specificity has to beat body.theme-light's rules */
+body.theme-light .enquiry-band .form-field label{
+  color:var(--accent-gold);
+}
+body.theme-light .enquiry-band .form-field input,
+body.theme-light .enquiry-band .form-field textarea,
+body.theme-light .enquiry-band .form-field select{
+  background:#F8F7F3;
+  border:1px solid rgba(246,246,245,.28);
+  color:var(--ink);
+  padding:13px 14px;
+  box-shadow:none;
+}
+body.theme-light .enquiry-band .form-field input:focus,
+body.theme-light .enquiry-band .form-field textarea:focus,
+body.theme-light .enquiry-band .form-field select:focus{
+  border-color:var(--gold-fill-2);
+  box-shadow:0 0 0 3px rgba(216,173,88,.32);
+}
+body.theme-light .enquiry-band .form-field input::placeholder,
+body.theme-light .enquiry-band .form-field textarea::placeholder{ color:#7A756B; }
+
+/* the outline button style the light theme applies everywhere would
+   disappear against bronze, so the submit keeps its solid gold fill */
+body.theme-light .enquiry-band .btn--gold{
+  background:var(--gold-fill);
+  border-color:var(--gold-fill);
+  color:var(--dark);
+}
+body.theme-light .enquiry-band .btn--gold:hover{
+  background:var(--gold-fill-2);
+  border-color:var(--gold-fill-2);
+  color:var(--dark);
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+@media (max-width:680px){
+  .enquiry-form{ grid-template-columns:1fr; }
+}
