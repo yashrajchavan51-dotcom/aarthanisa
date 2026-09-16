@@ -1440,3 +1440,43 @@ body .section--expertise{ padding-top:clamp(40px,5.5vw,76px); }
   .expertise-card{ border-right:none; border-bottom:1px solid var(--acipl-line); }
   .expertise-card:last-child{ border-bottom:none; }
 }
+
+/* =========================================================
+   CLIENT REVISION — CONTACT PAGE BACKDROP
+   A drafting sheet lying tilted behind the page, bleeding off the right
+   edge, with a soft shadow underneath it so it reads as a physical sheet
+   rather than a pattern. It spans the hero and the address/map row and is
+   then covered by the opaque bronze enquiry band, so it fades out of the
+   page the way the reference does.
+   ========================================================= */
+body.contact-page{ position:relative; }
+.sheet-backdrop{
+  position:absolute;
+  top:clamp(20px,6vh,96px);
+  right:clamp(-260px,-11vw,-90px);
+  width:min(66vw,920px);
+  z-index:-1;                 /* behind all content, above the page ground */
+  pointer-events:none;
+  transform:rotate(-12deg);
+  opacity:.55;
+  filter:drop-shadow(0 24px 38px rgba(30,30,30,.30));
+}
+.sheet-backdrop img{ width:100%; height:auto; display:block; }
+
+/* the hero and the contact row have to be transparent for the sheet to show
+   through — the light theme paints .page-hero solid white by default */
+body.contact-page .page-hero{ background:transparent; }
+body.contact-page .contact-top{ background:transparent; }
+
+@media (max-width:880px){
+  .sheet-backdrop{
+    top:8px;
+    right:-38%;
+    width:118vw;
+    opacity:.3;
+    filter:none;              /* the shadow reads as smudge at this scale */
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .sheet-backdrop{ transform:rotate(-12deg); }
+}
